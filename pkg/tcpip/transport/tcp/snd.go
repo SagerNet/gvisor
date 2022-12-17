@@ -1100,7 +1100,7 @@ func (s *sender) sendData() {
 	for seg := s.writeNext; seg != nil && s.Outstanding < s.SndCwnd; seg = seg.Next() {
 		// NOTE(gvisor.dev/issue/11632): Use uint64 to avoid overflow.
 		cwndLimit := uint64(s.SndCwnd-s.Outstanding) * uint64(s.MaxPayloadSize)
-		if cwndLimit < uint64(limit) {
+		if cwndLimit > 0 && cwndLimit < uint64(limit) {
 			limit = int(cwndLimit)
 		}
 		if s.isAssignedSequenceNumber(seg) && s.ep.SACKPermitted && s.ep.scoreboard.IsSACKED(seg.sackBlock()) {
