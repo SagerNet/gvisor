@@ -969,7 +969,7 @@ func (s *sender) sendData() {
 	var dataSent bool
 	for seg := s.writeNext; seg != nil && s.Outstanding < s.SndCwnd; seg = seg.Next() {
 		cwndLimit := (s.SndCwnd - s.Outstanding) * s.MaxPayloadSize
-		if cwndLimit < limit {
+		if cwndLimit > 0 && cwndLimit < limit {
 			limit = cwndLimit
 		}
 		if s.isAssignedSequenceNumber(seg) && s.ep.SACKPermitted && s.ep.scoreboard.IsSACKED(seg.sackBlock()) {
