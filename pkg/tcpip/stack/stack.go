@@ -22,6 +22,7 @@ package stack
 import (
 	"encoding/binary"
 	"fmt"
+	"github.com/sagernet/sing/common"
 	"io"
 	"math/rand"
 	"sync/atomic"
@@ -971,7 +972,7 @@ func (s *Stack) removeNICLocked(id tcpip.NICID) tcpip.Error {
 			n++
 		}
 	}
-	clear(s.routeTable[n:])
+	common.ClearArray(s.routeTable[n:])
 	s.routeTable = s.routeTable[:n]
 	s.routeMu.Unlock()
 

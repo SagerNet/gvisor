@@ -17,6 +17,7 @@ package header
 import (
 	"encoding/binary"
 	"fmt"
+	"github.com/sagernet/sing/common"
 	"time"
 
 	"gvisor.dev/gvisor/pkg/tcpip"
@@ -337,13 +338,13 @@ func (b IPv4) Checksum() uint16 {
 
 // SourceAddress returns the "source address" field of the IPv4 header.
 func (b IPv4) SourceAddress() tcpip.Address {
-	return tcpip.AddrFrom4([4]byte(b[srcAddr : srcAddr+IPv4AddressSize]))
+	return tcpip.AddrFrom4Slice(b[srcAddr : srcAddr+IPv4AddressSize])
 }
 
 // DestinationAddress returns the "destination address" field of the IPv4
 // header.
 func (b IPv4) DestinationAddress() tcpip.Address {
-	return tcpip.AddrFrom4([4]byte(b[dstAddr : dstAddr+IPv4AddressSize]))
+	return tcpip.AddrFrom4Slice(b[dstAddr : dstAddr+IPv4AddressSize])
 }
 
 // SetSourceAddressWithChecksumUpdate implements ChecksummableNetwork.
@@ -942,7 +943,7 @@ func (ts *IPv4OptionTimestamp) UpdateTimestamp(addr tcpip.Address, clock tcpip.C
 		binary.BigEndian.PutUint32(slot[IPv4AddressSize:], ipv4TimestampTime(clock))
 		(*ts)[IPv4OptTSPointerOffset] += IPv4OptionTimestampWithAddrSize
 	case IPv4OptionTimestampWithPredefinedIPFlag:
-		if tcpip.AddrFrom4([4]byte(slot[:IPv4AddressSize])) == addr {
+		if tcpip.AddrFrom4Slice(slot[:IPv4AddressSize]) == addr {
 			binary.BigEndian.PutUint32(slot[IPv4AddressSize:], ipv4TimestampTime(clock))
 			(*ts)[IPv4OptTSPointerOffset] += IPv4OptionTimestampWithAddrSize
 		}
@@ -1137,7 +1138,7 @@ func (s IPv4OptionsSerializer) Serialize(b []byte) uint8 {
 	//  header ends on a 32 bit boundary. The padding is zero.
 	padded := padIPv4OptionsLength(total)
 	b = b[:padded-total]
-	clear(b)
+	common.ClearArray(b)
 	return padded
 }
 

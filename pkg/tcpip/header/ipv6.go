@@ -18,6 +18,7 @@ import (
 	"crypto/sha256"
 	"encoding/binary"
 	"fmt"
+	"unsafe"
 
 	"gvisor.dev/gvisor/pkg/tcpip"
 )
@@ -216,13 +217,13 @@ func (b IPv6) Payload() []byte {
 
 // SourceAddress returns the "source address" field of the ipv6 header.
 func (b IPv6) SourceAddress() tcpip.Address {
-	return tcpip.AddrFrom16([16]byte(b[v6SrcAddr:][:IPv6AddressSize]))
+	return tcpip.AddrFrom16Slice(b[v6SrcAddr:][:IPv6AddressSize])
 }
 
 // DestinationAddress returns the "destination address" field of the ipv6
 // header.
 func (b IPv6) DestinationAddress() tcpip.Address {
-	return tcpip.AddrFrom16([16]byte(b[v6DstAddr:][:IPv6AddressSize]))
+	return tcpip.AddrFrom16Slice(b[v6DstAddr:][:IPv6AddressSize])
 }
 
 // Checksum implements Network.Checksum. Given that IPv6 doesn't have a
@@ -348,14 +349,14 @@ var solicitedNodeMulticastPrefix = [13]byte{0xff, 0x02, 0x00, 0x00, 0x00, 0x00, 
 // address.
 func SolicitedNodeAddr(addr tcpip.Address) tcpip.Address {
 	addrBytes := addr.As16()
-	return tcpip.AddrFrom16([16]byte(append(solicitedNodeMulticastPrefix[:], addrBytes[len(addrBytes)-3:]...)))
+	return tcpip.AddrFrom16Slice(append(solicitedNodeMulticastPrefix[:], addrBytes[len(addrBytes)-3:]...))
 }
 
 // IsSolicitedNodeAddr determines whether the address is a solicited-node
 // multicast address.
 func IsSolicitedNodeAddr(addr tcpip.Address) bool {
 	addrBytes := addr.As16()
-	return solicitedNodeMulticastPrefix == [13]byte(addrBytes[:len(addrBytes)-3])
+	return solicitedNodeMulticastPrefix == *(*[13]byte)(unsafe.Pointer(&addrBytes[0]))
 }
 
 // EthernetAdddressToModifiedEUI64IntoBuf populates buf with a modified EUI-64
@@ -457,7 +458,7 @@ func LinkLocalAddrWithOpaqueIID(nicName string, dadCounter uint8, secretKey []by
 		1: 0x80,
 	}
 
-	return tcpip.AddrFrom16([16]byte(AppendOpaqueInterfaceIdentifier(lladdrb[:IIDOffsetInIPv6Address], IPv6LinkLocalPrefix.Subnet(), nicName, dadCounter, secretKey)))
+	return tcpip.AddrFrom16Slice(AppendOpaqueInterfaceIdentifier(lladdrb[:IIDOffsetInIPv6Address], IPv6LinkLocalPrefix.Subnet(), nicName, dadCounter, secretKey))
 }
 
 // IPv6AddressScope is the scope of an IPv6 address.
