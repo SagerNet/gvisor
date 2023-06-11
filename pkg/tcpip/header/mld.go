@@ -92,7 +92,7 @@ func (m MLD) MulticastAddress() tcpip.Address {
 	//   In a Report or Done message, the Multicast Address field holds a
 	//   specific IPv6 multicast address to which the message sender is
 	//   listening or is ceasing to listen, respectively.
-	return tcpip.AddrFrom16([16]byte(m[mldMulticastAddressOffset:][:IPv6AddressSize]))
+	return tcpip.AddrFrom16Slice(m[mldMulticastAddressOffset:][:IPv6AddressSize])
 }
 
 // SetMulticastAddress sets the Multicast Address field.
