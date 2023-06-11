@@ -21,8 +21,8 @@ import (
 	"crypto/rand"
 	"io"
 
+	"github.com/sagernet/gvisor/pkg/sync"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/sync"
 )
 
 // reader implements an io.Reader that returns pseudorandom bytes.

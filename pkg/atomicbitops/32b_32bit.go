@@ -20,7 +20,7 @@ package atomicbitops
 import (
 	"sync/atomic"
 
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 // Note that this file is *identical* to 32b_64bit.go, as go_stateify gets

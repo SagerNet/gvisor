@@ -24,10 +24,10 @@ import (
 	"os"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/unet"
-	"gvisor.dev/gvisor/pkg/urpc"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/unet"
+	"github.com/sagernet/gvisor/pkg/urpc"
 )
 
 // curUID is the unix user ID of the user that the control server is running as.

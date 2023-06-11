@@ -3,7 +3,7 @@
 package fifo
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (pl *packetBufferCircularList) StateTypeName() string {

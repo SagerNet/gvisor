@@ -22,9 +22,9 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/sagernet/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/atomicbitops"
 )
 
 // OpenFlags is the mode passed to Open and Create operations.

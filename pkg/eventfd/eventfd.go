@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/sagernet/gvisor/pkg/hostarch"
+	"github.com/sagernet/gvisor/pkg/tcpip/link/rawfile"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/hostarch"
-	"gvisor.dev/gvisor/pkg/tcpip/link/rawfile"
 )
 
 const sizeofUint64 = 8

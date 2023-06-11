@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"unsafe"
 
+	"github.com/sagernet/gvisor/pkg/gohacks"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/gohacks"
 )
 
 // A BlockSeq represents a sequence of Blocks, each of which has non-zero

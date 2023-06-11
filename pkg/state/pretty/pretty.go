@@ -22,8 +22,8 @@ import (
 	"reflect"
 	"strings"
 
-	"gvisor.dev/gvisor/pkg/state"
-	"gvisor.dev/gvisor/pkg/state/wire"
+	"github.com/sagernet/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state/wire"
 )
 
 type printer struct {

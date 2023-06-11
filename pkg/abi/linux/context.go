@@ -15,7 +15,7 @@
 package linux
 
 import (
-	"gvisor.dev/gvisor/pkg/context"
+	"github.com/sagernet/gvisor/pkg/context"
 )
 
 // contextID is the linux package's type for context.Context.Value keys.
