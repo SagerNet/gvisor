@@ -39,6 +39,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unsafe"
 
 	"gvisor.dev/gvisor/pkg/atomicbitops"
 	"gvisor.dev/gvisor/pkg/sync"
@@ -226,7 +227,7 @@ func (a Address) As4() [4]byte {
 	if a.Len() != 4 {
 		panic(fmt.Sprintf("bad address length for address %v", a.addr))
 	}
-	return [4]byte(a.addr[:4])
+	return *(*[4]byte)((unsafe.Pointer)(&a.addr[0]))
 }
 
 // As16 returns a as a 16 byte array. It panics if the address length is not 16.
@@ -234,7 +235,7 @@ func (a Address) As16() [16]byte {
 	if a.Len() != 16 {
 		panic(fmt.Sprintf("bad address length for address %v", a.addr))
 	}
-	return [16]byte(a.addr[:16])
+	return a.addr
 }
 
 // AsSlice returns a as a byte slice. Callers should be careful as it can

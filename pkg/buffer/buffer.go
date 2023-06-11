@@ -19,6 +19,7 @@ package buffer
 
 import (
 	"fmt"
+	"github.com/sagernet/sing/common"
 	"io"
 
 	"gvisor.dev/gvisor/pkg/tcpip/checksum"
@@ -191,7 +192,7 @@ func (b *Buffer) GrowTo(length int64, zero bool) {
 
 		// Zero the written section.
 		if zero {
-			clear(v.chunk.data[v.write : v.write+sz])
+			common.ClearArray(v.chunk.data[v.write : v.write+sz])
 		}
 
 		// Advance the index.

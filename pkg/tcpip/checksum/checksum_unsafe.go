@@ -178,5 +178,9 @@ func bswapIfBigEndian16(val uint16) uint16 {
 }
 
 func sliceAddr(buf []byte) uintptr {
-	return uintptr(unsafe.Pointer(unsafe.SliceData(buf)))
+	if len(buf) == 0 {
+		return 0
+	}
+	return uintptr(unsafe.Pointer(&buf[:1][0]))
+	//return uintptr(unsafe.Pointer(unsafe.SliceData(buf)))
 }
