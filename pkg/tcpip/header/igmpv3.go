@@ -118,7 +118,7 @@ func IGMPv3MaximumResponseDelay(codeRaw uint8) time.Duration {
 
 // GroupAddress returns the group address.
 func (i IGMPv3Query) GroupAddress() tcpip.Address {
-	return tcpip.AddrFrom4([4]byte(i[igmpv3QueryGroupAddressOffset:][:IPv4AddressSize]))
+	return tcpip.AddrFrom4Slice(i[igmpv3QueryGroupAddressOffset:][:IPv4AddressSize])
 }
 
 // QuerierRobustnessVariable returns the querier's robustness variable.
@@ -390,7 +390,7 @@ func (r IGMPv3ReportGroupAddressRecord) numberOfSources() uint16 {
 
 // GroupAddress returns the multicast address this record targets.
 func (r IGMPv3ReportGroupAddressRecord) GroupAddress() tcpip.Address {
-	return tcpip.AddrFrom4([4]byte(r[igmpv3ReportGroupAddressRecordGroupAddressOffset:][:IPv4AddressSize]))
+	return tcpip.AddrFrom4Slice(r[igmpv3ReportGroupAddressRecordGroupAddressOffset:][:IPv4AddressSize])
 }
 
 // Sources returns an iterator over source addresses in the query.
