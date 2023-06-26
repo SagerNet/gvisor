@@ -171,8 +171,7 @@ func (t *Tflush) String() string {
 }
 
 // Rflush is a flush response.
-type Rflush struct {
-}
+type Rflush struct{}
 
 // decode implements encoder.decode.
 func (*Rflush) decode(*buffer) {
@@ -297,8 +296,7 @@ func (t *Tclunk) String() string {
 }
 
 // Rclunk is a close response.
-type Rclunk struct {
-}
+type Rclunk struct{}
 
 // decode implements encoder.decode.
 func (*Rclunk) decode(*buffer) {
@@ -355,8 +353,7 @@ func (t *Tsetattrclunk) String() string {
 }
 
 // Rsetattrclunk is a setattr+close response.
-type Rsetattrclunk struct {
-}
+type Rsetattrclunk struct{}
 
 // decode implements encoder.decode.
 func (*Rsetattrclunk) decode(*buffer) {
@@ -405,8 +402,7 @@ func (t *Tremove) String() string {
 }
 
 // Rremove is a remove response.
-type Rremove struct {
-}
+type Rremove struct{}
 
 // decode implements encoder.decode.
 func (*Rremove) decode(*buffer) {
@@ -795,8 +791,7 @@ func (t *Tlink) String() string {
 }
 
 // Rlink is a link response.
-type Rlink struct {
-}
+type Rlink struct{}
 
 // Type implements message.Type.
 func (*Rlink) Type() MsgType {
@@ -858,8 +853,7 @@ func (t *Trenameat) String() string {
 }
 
 // Rrenameat is a rename response.
-type Rrenameat struct {
-}
+type Rrenameat struct{}
 
 // decode implements encoder.decode.
 func (*Rrenameat) decode(*buffer) {
@@ -916,8 +910,7 @@ func (t *Tunlinkat) String() string {
 }
 
 // Runlinkat is an unlink response.
-type Runlinkat struct {
-}
+type Runlinkat struct{}
 
 // decode implements encoder.decode.
 func (*Runlinkat) decode(*buffer) {
@@ -977,8 +970,7 @@ func (t *Trename) String() string {
 }
 
 // Rrename is a rename response.
-type Rrename struct {
-}
+type Rrename struct{}
 
 // decode implements encoder.decode.
 func (*Rrename) decode(*buffer) {
@@ -1464,8 +1456,7 @@ func (t *Tsetattr) String() string {
 }
 
 // Rsetattr is a setattr response.
-type Rsetattr struct {
-}
+type Rsetattr struct{}
 
 // decode implements encoder.decode.
 func (*Rsetattr) decode(*buffer) {
@@ -1521,8 +1512,7 @@ func (t *Tallocate) String() string {
 }
 
 // Rallocate is an allocate response.
-type Rallocate struct {
-}
+type Rallocate struct{}
 
 // decode implements encoder.decode.
 func (*Rallocate) decode(*buffer) {
@@ -1713,8 +1703,7 @@ func (t *Txattrcreate) String() string {
 }
 
 // Rxattrcreate is a xattrcreate response.
-type Rxattrcreate struct {
-}
+type Rxattrcreate struct{}
 
 // decode implements encoder.decode.
 func (r *Rxattrcreate) decode(*buffer) {
@@ -1838,8 +1827,7 @@ func (t *Tsetxattr) String() string {
 }
 
 // Rsetxattr is a setxattr response.
-type Rsetxattr struct {
-}
+type Rsetxattr struct{}
 
 // decode implements encoder.decode.
 func (r *Rsetxattr) decode(*buffer) {
@@ -1891,8 +1879,7 @@ func (t *Tremovexattr) String() string {
 }
 
 // Rremovexattr is a removexattr response.
-type Rremovexattr struct {
-}
+type Rremovexattr struct{}
 
 // decode implements encoder.decode.
 func (r *Rremovexattr) decode(*buffer) {
@@ -2051,8 +2038,7 @@ func (t *Tfsync) String() string {
 }
 
 // Rfsync is an fsync response.
-type Rfsync struct {
-}
+type Rfsync struct{}
 
 // decode implements encoder.decode.
 func (*Rfsync) decode(*buffer) {
@@ -2151,8 +2137,7 @@ func (t *Tflushf) String() string {
 }
 
 // Rflushf is a flush file response.
-type Rflushf struct {
-}
+type Rflushf struct{}
 
 // decode implements encoder.decode.
 func (*Rflushf) decode(*buffer) {

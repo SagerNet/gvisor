@@ -51,11 +51,9 @@ const (
 	maxTSDiff = 2
 )
 
-var (
-	// mssTable is a slice containing the possible MSS values that we
-	// encode in the SYN cookie with two bits.
-	mssTable = []uint16{536, 1300, 1440, 1460}
-)
+// mssTable is a slice containing the possible MSS values that we
+// encode in the SYN cookie with two bits.
+var mssTable = []uint16{536, 1300, 1440, 1460}
 
 func encodeMSS(mss uint16) uint32 {
 	for i := len(mssTable) - 1; i > 0; i-- {
@@ -130,7 +128,6 @@ func newListenContext(stk *stack.Stack, protocol *protocol, listenEP *endpoint, 
 // cookieHash calculates the cookieHash for the given id, timestamp and nonce
 // index. The hash is used to create and validate cookies.
 func (l *listenContext) cookieHash(id stack.TransportEndpointID, ts uint32, nonceIndex int) uint32 {
-
 	// Initialize block with fixed-size data: local ports and v.
 	var payload [8]byte
 	binary.BigEndian.PutUint16(payload[0:], id.LocalPort)

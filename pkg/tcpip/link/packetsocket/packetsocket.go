@@ -22,8 +22,10 @@ import (
 	"gvisor.dev/gvisor/pkg/tcpip/stack"
 )
 
-var _ stack.NetworkDispatcher = (*endpoint)(nil)
-var _ stack.LinkEndpoint = (*endpoint)(nil)
+var (
+	_ stack.NetworkDispatcher = (*endpoint)(nil)
+	_ stack.LinkEndpoint      = (*endpoint)(nil)
+)
 
 type endpoint struct {
 	nested.Endpoint

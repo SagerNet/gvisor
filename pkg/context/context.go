@@ -182,8 +182,10 @@ type logContext struct {
 }
 
 // bgContext is the context returned by context.Background.
-var bgContext Context
-var bgOnce sync.Once
+var (
+	bgContext Context
+	bgOnce    sync.Once
+)
 
 // Background returns an empty context using the default logger.
 // Generally, one should use the Task as their context when available, or avoid

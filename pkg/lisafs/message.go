@@ -54,9 +54,11 @@ import (
 // For instance, directly passing the struct to fmt.Sprintf() escapes it
 // because of the implicit conversion to any.
 
-type marshalFunc func([]byte) []byte
-type unmarshalFunc func([]byte) ([]byte, bool)
-type debugStringer func() string
+type (
+	marshalFunc   func([]byte) []byte
+	unmarshalFunc func([]byte) ([]byte, bool)
+	debugStringer func() string
+)
 
 // MID (message ID) is used to identify messages to parse from payload.
 //

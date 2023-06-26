@@ -47,7 +47,7 @@ const (
 
 	// OpenTruncate is a Tlopen flag indicating that the opened file should be
 	// truncated.
-	OpenTruncate OpenFlags = 01000
+	OpenTruncate OpenFlags = 0o1000
 )
 
 // SocketType is the socket type passed in Connect and Bind operations.
@@ -142,54 +142,54 @@ type FileMode uint32
 
 const (
 	// FileModeMask is a mask of all the file mode bits of FileMode.
-	FileModeMask FileMode = 0170000
+	FileModeMask FileMode = 0o170000
 
 	// ModeSocket is an (unused) mode bit for a socket.
-	ModeSocket FileMode = 0140000
+	ModeSocket FileMode = 0o140000
 
 	// ModeSymlink is a mode bit for a symlink.
-	ModeSymlink FileMode = 0120000
+	ModeSymlink FileMode = 0o120000
 
 	// ModeRegular is a mode bit for regular files.
-	ModeRegular FileMode = 0100000
+	ModeRegular FileMode = 0o100000
 
 	// ModeBlockDevice is a mode bit for block devices.
-	ModeBlockDevice FileMode = 060000
+	ModeBlockDevice FileMode = 0o60000
 
 	// ModeDirectory is a mode bit for directories.
-	ModeDirectory FileMode = 040000
+	ModeDirectory FileMode = 0o40000
 
 	// ModeCharacterDevice is a mode bit for a character device.
-	ModeCharacterDevice FileMode = 020000
+	ModeCharacterDevice FileMode = 0o20000
 
 	// ModeNamedPipe is a mode bit for a named pipe.
-	ModeNamedPipe FileMode = 010000
+	ModeNamedPipe FileMode = 0o10000
 
 	// Read is a mode bit indicating read permission.
-	Read FileMode = 04
+	Read FileMode = 0o4
 
 	// Write is a mode bit indicating write permission.
-	Write FileMode = 02
+	Write FileMode = 0o2
 
 	// Exec is a mode bit indicating exec permission.
-	Exec FileMode = 01
+	Exec FileMode = 0o1
 
 	// AllPermissions is a mask with rwx bits set for user, group and others.
-	AllPermissions FileMode = 0777
+	AllPermissions FileMode = 0o777
 
 	// Sticky is a mode bit indicating sticky directories.
-	Sticky FileMode = 01000
+	Sticky FileMode = 0o1000
 
 	// SetGID is the set group ID bit.
-	SetGID FileMode = 02000
+	SetGID FileMode = 0o2000
 
 	// SetUID is the set user ID bit.
-	SetUID FileMode = 04000
+	SetUID FileMode = 0o4000
 
 	// permissionsMask is the mask to apply to FileModes for permissions. It
 	// includes rwx bits for user, group, and others, as well as the sticky
 	// bit, setuid bit, and setgid bit.
-	permissionsMask FileMode = 07777
+	permissionsMask FileMode = 0o7777
 )
 
 // QIDType is the most significant byte of the FileMode word, to be used as the
@@ -220,22 +220,22 @@ func (m FileMode) Permissions() FileMode {
 
 // Writable returns the mode with write bits added.
 func (m FileMode) Writable() FileMode {
-	return m | 0222
+	return m | 0o222
 }
 
 // IsReadable returns true if m represents a file that can be read.
 func (m FileMode) IsReadable() bool {
-	return m&0444 != 0
+	return m&0o444 != 0
 }
 
 // IsWritable returns true if m represents a file that can be written to.
 func (m FileMode) IsWritable() bool {
-	return m&0222 != 0
+	return m&0o222 != 0
 }
 
 // IsExecutable returns true if m represents a file that can be executed.
 func (m FileMode) IsExecutable() bool {
-	return m&0111 != 0
+	return m&0o111 != 0
 }
 
 // IsRegular returns true if m is a regular file.

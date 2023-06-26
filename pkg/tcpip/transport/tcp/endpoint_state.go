@@ -82,9 +82,11 @@ func (e *endpoint) saveState() EndpointState {
 // Endpoint loading must be done in the following ordering by their state, to
 // avoid dangling connecting w/o listening peer, and to avoid conflicts in port
 // reservation.
-var connectedLoading sync.WaitGroup
-var listenLoading sync.WaitGroup
-var connectingLoading sync.WaitGroup
+var (
+	connectedLoading  sync.WaitGroup
+	listenLoading     sync.WaitGroup
+	connectingLoading sync.WaitGroup
+)
 
 // Bound endpoint loading happens last.
 

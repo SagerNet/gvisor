@@ -45,6 +45,7 @@ func (*ErrAborted) isError() {}
 func (*ErrAborted) IgnoreStats() bool {
 	return false
 }
+
 func (*ErrAborted) String() string {
 	return "operation aborted"
 }
@@ -61,6 +62,7 @@ func (*ErrAddressFamilyNotSupported) isError() {}
 func (*ErrAddressFamilyNotSupported) IgnoreStats() bool {
 	return false
 }
+
 func (*ErrAddressFamilyNotSupported) String() string {
 	return "address family not supported by protocol"
 }

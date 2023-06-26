@@ -63,7 +63,6 @@ func (r *renoState) reduceSlowStartThreshold() {
 	if r.s.Ssthresh < 2 {
 		r.s.Ssthresh = 2
 	}
-
 }
 
 // Update updates the congestion state based on the number of packets that

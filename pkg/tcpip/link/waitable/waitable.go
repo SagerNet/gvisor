@@ -28,8 +28,10 @@ import (
 	"gvisor.dev/gvisor/pkg/tcpip/stack"
 )
 
-var _ stack.NetworkDispatcher = (*Endpoint)(nil)
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
+var (
+	_ stack.NetworkDispatcher = (*Endpoint)(nil)
+	_ stack.LinkEndpoint      = (*Endpoint)(nil)
+)
 
 // Endpoint is a waitable link-layer endpoint.
 type Endpoint struct {

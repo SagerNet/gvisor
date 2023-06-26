@@ -202,7 +202,6 @@ func (rt *DNATTarget) Action(pkt PacketBufferPtr, hook Hook, r *Route, addressEP
 	}
 
 	return dnatAction(pkt, hook, r, rt.Port, rt.Addr)
-
 }
 
 // RedirectTarget redirects the packet to this machine by modifying the

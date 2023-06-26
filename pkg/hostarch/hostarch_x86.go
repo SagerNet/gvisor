@@ -39,7 +39,5 @@ const (
 	CacheLineShift = 6
 )
 
-var (
-	// ByteOrder is the native byte order (little endian).
-	ByteOrder = binary.LittleEndian
-)
+// ByteOrder is the native byte order (little endian).
+var ByteOrder = binary.LittleEndian

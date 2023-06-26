@@ -129,8 +129,10 @@ func (q *queue) RemoveNotify(handle *NotificationHandle) {
 	q.notify = notify
 }
 
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
-var _ stack.GSOEndpoint = (*Endpoint)(nil)
+var (
+	_ stack.LinkEndpoint = (*Endpoint)(nil)
+	_ stack.GSOEndpoint  = (*Endpoint)(nil)
+)
 
 // Endpoint is link layer endpoint that stores outbound packets in a channel
 // and allows injection of inbound packets.

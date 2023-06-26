@@ -37,9 +37,11 @@ type Endpoint struct {
 	dispatcher stack.NetworkDispatcher
 }
 
-var _ stack.GSOEndpoint = (*Endpoint)(nil)
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
-var _ stack.NetworkDispatcher = (*Endpoint)(nil)
+var (
+	_ stack.GSOEndpoint       = (*Endpoint)(nil)
+	_ stack.LinkEndpoint      = (*Endpoint)(nil)
+	_ stack.NetworkDispatcher = (*Endpoint)(nil)
+)
 
 // Init initializes a nested.Endpoint that uses embedder as the dispatcher for
 // child on Attach.

@@ -29,8 +29,10 @@ type linkResolver struct {
 	neigh neighborCache
 }
 
-var _ NetworkInterface = (*nic)(nil)
-var _ NetworkDispatcher = (*nic)(nil)
+var (
+	_ NetworkInterface  = (*nic)(nil)
+	_ NetworkDispatcher = (*nic)(nil)
+)
 
 // nic represents a "network interface card" to which the networking stack is
 // attached.

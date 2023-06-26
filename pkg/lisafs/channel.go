@@ -25,9 +25,7 @@ import (
 	"gvisor.dev/gvisor/pkg/log"
 )
 
-var (
-	chanHeaderLen = uint32((*channelHeader)(nil).SizeBytes())
-)
+var chanHeaderLen = uint32((*channelHeader)(nil).SizeBytes())
 
 // maxChannels returns the number of channels a client can create.
 //

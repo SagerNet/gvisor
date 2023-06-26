@@ -28,7 +28,6 @@ func (b *BytesIO) SwapUint32(ctx context.Context, addr hostarch.Addr, new uint32
 		return 0, rngErr
 	}
 	return (*atomicbitops.Uint32)(unsafe.Pointer(&b.Bytes[int(addr)])).Swap(new), nil
-
 }
 
 // CompareAndSwapUint32 implements IO.CompareAndSwapUint32.

@@ -493,7 +493,6 @@ func (h *handshake) synRcvdState(s *segment) tcpip.Error {
 		// to be processed by the newly established endpoint.
 		if (s.flags.Contains(header.TCPFlagFin) || s.payloadSize() > 0) && h.ep.enqueueSegment(s) {
 			h.ep.protocol.dispatcher.selectProcessor(h.ep.ID).queueEndpoint(h.ep)
-
 		}
 		return nil
 	}

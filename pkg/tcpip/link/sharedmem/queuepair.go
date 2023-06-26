@@ -89,7 +89,6 @@ func NewQueuePair(opts QueueOptions) (*QueuePair, error) {
 		rxPipeSize:     DefaultQueuePipeSize,
 		sharedDataSize: DefaultSharedDataSize,
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("failed to create tx queue: %s", err)
 	}
@@ -100,7 +99,6 @@ func NewQueuePair(opts QueueOptions) (*QueuePair, error) {
 		rxPipeSize:     DefaultQueuePipeSize,
 		sharedDataSize: DefaultSharedDataSize,
 	})
-
 	if err != nil {
 		closeFDs(txCfg)
 		return nil, fmt.Errorf("failed to create rx queue: %s", err)
@@ -182,7 +180,7 @@ func createQueueFDs(sharedMemPath string, s queueSizes) (QueueConfig, error) {
 }
 
 func createFile(sharedMemPath string, size int64, initQueue bool) (fd int, err error) {
-	var tmpDir = DefaultTmpDir
+	tmpDir := DefaultTmpDir
 	if sharedMemPath != "" {
 		tmpDir = sharedMemPath
 	}

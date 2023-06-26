@@ -262,8 +262,7 @@ func (q *Queue) IsEmpty() bool {
 // AlwaysReady implements the Waitable interface but is always ready. Embedding
 // this struct into another struct makes it implement the boilerplate empty
 // functions automatically.
-type AlwaysReady struct {
-}
+type AlwaysReady struct{}
 
 // Readiness always returns the input mask because this object is always ready.
 func (*AlwaysReady) Readiness(mask EventMask) EventMask {
@@ -283,8 +282,7 @@ func (*AlwaysReady) EventUnregister(e *Entry) {
 
 // NeverReady implements the Waitable interface but is never ready. Otherwise,
 // this is exactly the same as AlwaysReady.
-type NeverReady struct {
-}
+type NeverReady struct{}
 
 // Readiness always returns the input mask because this object is always ready.
 func (*NeverReady) Readiness(mask EventMask) EventMask {

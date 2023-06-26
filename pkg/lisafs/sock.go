@@ -23,9 +23,7 @@ import (
 	"gvisor.dev/gvisor/pkg/unet"
 )
 
-var (
-	sockHeaderLen = uint32((*sockHeader)(nil).SizeBytes())
-)
+var sockHeaderLen = uint32((*sockHeader)(nil).SizeBytes())
 
 // sockHeader is the header present in front of each message received on a UDS.
 //

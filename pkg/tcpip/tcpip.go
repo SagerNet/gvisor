@@ -534,8 +534,10 @@ type Payloader interface {
 	Len() int
 }
 
-var _ Payloader = (*bytes.Buffer)(nil)
-var _ Payloader = (*bytes.Reader)(nil)
+var (
+	_ Payloader = (*bytes.Buffer)(nil)
+	_ Payloader = (*bytes.Reader)(nil)
+)
 
 var _ io.Writer = (*SliceWriter)(nil)
 

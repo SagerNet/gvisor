@@ -156,7 +156,8 @@ func NewFragmentation(blockSize uint16, highMemoryLimit, lowMemoryLimit int, rea
 // the protocol to identify a fragment.
 func (f *Fragmentation) Process(
 	id FragmentID, first, last uint16, more bool, proto uint8, pkt stack.PacketBufferPtr) (
-	stack.PacketBufferPtr, uint8, bool, error) {
+	stack.PacketBufferPtr, uint8, bool, error,
+) {
 	if first > last {
 		return nil, 0, false, fmt.Errorf("first=%d is greater than last=%d: %w", first, last, ErrInvalidArgs)
 	}

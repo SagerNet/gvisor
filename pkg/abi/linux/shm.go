@@ -18,18 +18,18 @@ import "math"
 
 // shmat(2) flags. Source: include/uapi/linux/shm.h
 const (
-	SHM_RDONLY = 010000  // Read-only access.
-	SHM_RND    = 020000  // Round attach address to SHMLBA boundary.
-	SHM_REMAP  = 040000  // Take-over region on attach.
-	SHM_EXEC   = 0100000 // Execution access.
+	SHM_RDONLY = 0o10000  // Read-only access.
+	SHM_RND    = 0o20000  // Round attach address to SHMLBA boundary.
+	SHM_REMAP  = 0o40000  // Take-over region on attach.
+	SHM_EXEC   = 0o100000 // Execution access.
 )
 
 // IPCPerm.Mode upper byte flags. Source: include/linux/shm.h
 const (
-	SHM_DEST      = 01000  // Segment will be destroyed on last detach.
-	SHM_LOCKED    = 02000  // Segment will not be swapped.
-	SHM_HUGETLB   = 04000  // Segment will use huge TLB pages.
-	SHM_NORESERVE = 010000 // Don't check for reservations.
+	SHM_DEST      = 0o1000  // Segment will be destroyed on last detach.
+	SHM_LOCKED    = 0o2000  // Segment will not be swapped.
+	SHM_HUGETLB   = 0o4000  // Segment will use huge TLB pages.
+	SHM_NORESERVE = 0o10000 // Don't check for reservations.
 )
 
 // Additional Linux-only flags for shmctl(2). Source: include/uapi/linux/shm.h

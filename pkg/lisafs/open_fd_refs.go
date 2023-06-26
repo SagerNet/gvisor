@@ -43,7 +43,6 @@ type openFDRefs struct {
 // InitRefs initializes r with one reference and, if enabled, activates leak
 // checking.
 func (r *openFDRefs) InitRefs() {
-
 	r.refCount.RacyStore(1)
 	refs.Register(r)
 }

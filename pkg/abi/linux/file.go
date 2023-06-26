@@ -23,23 +23,23 @@ import (
 
 // Constants for open(2).
 const (
-	O_ACCMODE  = 000000003
-	O_RDONLY   = 000000000
-	O_WRONLY   = 000000001
-	O_RDWR     = 000000002
-	O_CREAT    = 000000100
-	O_EXCL     = 000000200
-	O_NOCTTY   = 000000400
-	O_TRUNC    = 000001000
-	O_APPEND   = 000002000
-	O_NONBLOCK = 000004000
-	O_DSYNC    = 000010000
-	O_ASYNC    = 000020000
-	O_NOATIME  = 001000000
-	O_CLOEXEC  = 002000000
-	O_SYNC     = 004000000 // __O_SYNC in Linux
-	O_PATH     = 010000000
-	O_TMPFILE  = 020000000 // __O_TMPFILE in Linux
+	O_ACCMODE  = 0o00000003
+	O_RDONLY   = 0o00000000
+	O_WRONLY   = 0o00000001
+	O_RDWR     = 0o00000002
+	O_CREAT    = 0o00000100
+	O_EXCL     = 0o00000200
+	O_NOCTTY   = 0o00000400
+	O_TRUNC    = 0o00001000
+	O_APPEND   = 0o00002000
+	O_NONBLOCK = 0o00004000
+	O_DSYNC    = 0o00010000
+	O_ASYNC    = 0o00020000
+	O_NOATIME  = 0o01000000
+	O_CLOEXEC  = 0o02000000
+	O_SYNC     = 0o04000000 // __O_SYNC in Linux
+	O_PATH     = 0o10000000
+	O_TMPFILE  = 0o20000000 // __O_TMPFILE in Linux
 )
 
 // Constants for fstatat(2).
@@ -126,14 +126,14 @@ const (
 
 // Values for mode_t.
 const (
-	S_IFMT   = 0170000
-	S_IFSOCK = 0140000
-	S_IFLNK  = 0120000
-	S_IFREG  = 0100000
-	S_IFBLK  = 060000
-	S_IFDIR  = 040000
-	S_IFCHR  = 020000
-	S_IFIFO  = 010000
+	S_IFMT   = 0o170000
+	S_IFSOCK = 0o140000
+	S_IFLNK  = 0o120000
+	S_IFREG  = 0o100000
+	S_IFBLK  = 0o60000
+	S_IFDIR  = 0o40000
+	S_IFCHR  = 0o20000
+	S_IFIFO  = 0o10000
 
 	FileTypeMask        = S_IFMT
 	ModeSocket          = S_IFSOCK
@@ -144,27 +144,27 @@ const (
 	ModeCharacterDevice = S_IFCHR
 	ModeNamedPipe       = S_IFIFO
 
-	S_ISUID = 04000
-	S_ISGID = 02000
-	S_ISVTX = 01000
+	S_ISUID = 0o4000
+	S_ISGID = 0o2000
+	S_ISVTX = 0o1000
 
 	ModeSetUID = S_ISUID
 	ModeSetGID = S_ISGID
 	ModeSticky = S_ISVTX
 
-	ModeUserAll     = 0700
-	ModeUserRead    = 0400
-	ModeUserWrite   = 0200
-	ModeUserExec    = 0100
-	ModeGroupAll    = 0070
-	ModeGroupRead   = 0040
-	ModeGroupWrite  = 0020
-	ModeGroupExec   = 0010
-	ModeOtherAll    = 0007
-	ModeOtherRead   = 0004
-	ModeOtherWrite  = 0002
-	ModeOtherExec   = 0001
-	PermissionsMask = 0777
+	ModeUserAll     = 0o700
+	ModeUserRead    = 0o400
+	ModeUserWrite   = 0o200
+	ModeUserExec    = 0o100
+	ModeGroupAll    = 0o070
+	ModeGroupRead   = 0o040
+	ModeGroupWrite  = 0o020
+	ModeGroupExec   = 0o010
+	ModeOtherAll    = 0o007
+	ModeOtherRead   = 0o004
+	ModeOtherWrite  = 0o002
+	ModeOtherExec   = 0o001
+	PermissionsMask = 0o777
 )
 
 // Values for linux_dirent64.d_type.

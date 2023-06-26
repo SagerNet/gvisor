@@ -103,8 +103,10 @@ func (p PacketDispatchMode) String() string {
 	}
 }
 
-var _ stack.LinkEndpoint = (*endpoint)(nil)
-var _ stack.GSOEndpoint = (*endpoint)(nil)
+var (
+	_ stack.LinkEndpoint = (*endpoint)(nil)
+	_ stack.GSOEndpoint  = (*endpoint)(nil)
+)
 
 type fdInfo struct {
 	fd       int

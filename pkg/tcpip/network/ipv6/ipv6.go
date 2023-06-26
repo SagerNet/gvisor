@@ -171,17 +171,19 @@ func getLabel(addr tcpip.Address) uint8 {
 	panic(fmt.Sprintf("should have a label for address = %s", addr))
 }
 
-var _ stack.DuplicateAddressDetector = (*endpoint)(nil)
-var _ stack.LinkAddressResolver = (*endpoint)(nil)
-var _ stack.LinkResolvableNetworkEndpoint = (*endpoint)(nil)
-var _ stack.ForwardingNetworkEndpoint = (*endpoint)(nil)
-var _ stack.MulticastForwardingNetworkEndpoint = (*endpoint)(nil)
-var _ stack.GroupAddressableEndpoint = (*endpoint)(nil)
-var _ stack.AddressableEndpoint = (*endpoint)(nil)
-var _ stack.NetworkEndpoint = (*endpoint)(nil)
-var _ stack.NDPEndpoint = (*endpoint)(nil)
-var _ MLDEndpoint = (*endpoint)(nil)
-var _ NDPEndpoint = (*endpoint)(nil)
+var (
+	_ stack.DuplicateAddressDetector           = (*endpoint)(nil)
+	_ stack.LinkAddressResolver                = (*endpoint)(nil)
+	_ stack.LinkResolvableNetworkEndpoint      = (*endpoint)(nil)
+	_ stack.ForwardingNetworkEndpoint          = (*endpoint)(nil)
+	_ stack.MulticastForwardingNetworkEndpoint = (*endpoint)(nil)
+	_ stack.GroupAddressableEndpoint           = (*endpoint)(nil)
+	_ stack.AddressableEndpoint                = (*endpoint)(nil)
+	_ stack.NetworkEndpoint                    = (*endpoint)(nil)
+	_ stack.NDPEndpoint                        = (*endpoint)(nil)
+	_ MLDEndpoint                              = (*endpoint)(nil)
+	_ NDPEndpoint                              = (*endpoint)(nil)
+)
 
 type endpoint struct {
 	nic        stack.NetworkInterface
@@ -2263,10 +2265,12 @@ func (e *endpoint) Stats() stack.NetworkEndpointStats {
 	return &e.stats.localStats
 }
 
-var _ stack.NetworkProtocol = (*protocol)(nil)
-var _ stack.MulticastForwardingNetworkProtocol = (*protocol)(nil)
-var _ stack.RejectIPv6WithHandler = (*protocol)(nil)
-var _ fragmentation.TimeoutHandler = (*protocol)(nil)
+var (
+	_ stack.NetworkProtocol                    = (*protocol)(nil)
+	_ stack.MulticastForwardingNetworkProtocol = (*protocol)(nil)
+	_ stack.RejectIPv6WithHandler              = (*protocol)(nil)
+	_ fragmentation.TimeoutHandler             = (*protocol)(nil)
+)
 
 type protocol struct {
 	stack   *stack.Stack
