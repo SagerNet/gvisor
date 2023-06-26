@@ -3,7 +3,7 @@
 package packet
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (p *packet) StateTypeName() string {

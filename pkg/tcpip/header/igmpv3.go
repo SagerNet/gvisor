@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip"
 )
 
 // IGMPv3RoutersAddress is the address to send IGMPv3 reports to.

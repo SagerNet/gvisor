@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"runtime"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/context"
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/context"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 // RefCounter is the interface to be implemented by objects that are reference

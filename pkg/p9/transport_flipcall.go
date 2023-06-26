@@ -17,11 +17,11 @@ package p9
 import (
 	"runtime"
 
+	"github.com/sagernet/gvisor/pkg/fd"
+	"github.com/sagernet/gvisor/pkg/fdchannel"
+	"github.com/sagernet/gvisor/pkg/flipcall"
+	"github.com/sagernet/gvisor/pkg/log"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/fd"
-	"gvisor.dev/gvisor/pkg/fdchannel"
-	"gvisor.dev/gvisor/pkg/flipcall"
-	"gvisor.dev/gvisor/pkg/log"
 )
 
 // channelsPerClient is the number of channels to create per client.

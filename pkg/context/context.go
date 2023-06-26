@@ -28,8 +28,8 @@ import (
 	"sync"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/waiter"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/waiter"
 )
 
 // Blocker represents an object with control flow hooks.

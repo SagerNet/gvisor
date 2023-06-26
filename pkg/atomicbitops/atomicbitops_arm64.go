@@ -20,8 +20,8 @@ package atomicbitops
 import (
 	"runtime"
 
+	"github.com/sagernet/gvisor/pkg/cpuid"
 	"golang.org/x/sys/cpu"
-	"gvisor.dev/gvisor/pkg/cpuid"
 )
 
 var arm64HasATOMICS bool

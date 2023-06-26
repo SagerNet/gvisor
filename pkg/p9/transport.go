@@ -20,11 +20,11 @@ import (
 	"io"
 	"io/ioutil"
 
+	"github.com/sagernet/gvisor/pkg/fd"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/unet"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/fd"
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/unet"
 )
 
 // ErrSocket is returned in cases of a socket issue.

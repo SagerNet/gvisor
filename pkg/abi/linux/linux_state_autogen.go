@@ -3,7 +3,7 @@
 package linux
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (i *IOEvent) StateTypeName() string {

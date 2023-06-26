@@ -3,7 +3,7 @@
 package ipv4
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (i *icmpv4DestinationUnreachableSockError) StateTypeName() string {

@@ -22,7 +22,7 @@ import (
 	"strconv"
 	"strings"
 
-	"gvisor.dev/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/log"
 )
 
 // cpuididFunction is a useful type wrapper. The format is eax | (ecx << 32).
