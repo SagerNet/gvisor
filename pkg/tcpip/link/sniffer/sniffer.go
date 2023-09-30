@@ -26,13 +26,13 @@ import (
 	"io"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/header/parse"
-	"gvisor.dev/gvisor/pkg/tcpip/link/nested"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/header/parse"
+	"github.com/sagernet/gvisor/pkg/tcpip/link/nested"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
 )
 
 // LogPackets is a flag used to enable or disable packet logging via the log

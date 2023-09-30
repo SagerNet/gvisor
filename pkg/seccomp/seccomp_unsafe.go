@@ -20,7 +20,7 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/abi/linux"
 )
 
 // SetFilter installs the given BPF program.

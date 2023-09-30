@@ -22,11 +22,11 @@ import (
 	"sync"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/hash/jenkins"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/transport/tcpconntrack"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/hash/jenkins"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/transport/tcpconntrack"
 )
 
 // Connection tracking is used to track and manipulate packets for NAT rules.

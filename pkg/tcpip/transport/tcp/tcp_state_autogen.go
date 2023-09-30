@@ -3,7 +3,7 @@
 package tcp
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (a *acceptQueue) StateTypeName() string {

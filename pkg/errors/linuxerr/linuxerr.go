@@ -21,8 +21,8 @@ import (
 	"fmt"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux/errno"
-	"gvisor.dev/gvisor/pkg/errors"
+	"github.com/sagernet/gvisor/pkg/abi/linux/errno"
+	"github.com/sagernet/gvisor/pkg/errors"
 )
 
 const maxErrno uint32 = errno.EHWPOISON + 1
