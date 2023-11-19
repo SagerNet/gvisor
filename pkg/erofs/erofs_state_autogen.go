@@ -3,7 +3,7 @@
 package erofs
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (sb *SuperBlock) StateTypeName() string {

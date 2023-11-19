@@ -22,16 +22,16 @@ import (
 	"sort"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/buffer"
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/header/parse"
-	"gvisor.dev/gvisor/pkg/tcpip/network/internal/fragmentation"
-	"gvisor.dev/gvisor/pkg/tcpip/network/internal/ip"
-	"gvisor.dev/gvisor/pkg/tcpip/network/internal/multicast"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/buffer"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/header/parse"
+	"github.com/sagernet/gvisor/pkg/tcpip/network/internal/fragmentation"
+	"github.com/sagernet/gvisor/pkg/tcpip/network/internal/ip"
+	"github.com/sagernet/gvisor/pkg/tcpip/network/internal/multicast"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
 )
 
 const (

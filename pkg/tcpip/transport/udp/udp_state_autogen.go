@@ -3,7 +3,7 @@
 package udp
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (p *udpPacket) StateTypeName() string {

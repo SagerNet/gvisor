@@ -28,14 +28,14 @@ import (
 	"time"
 
 	"golang.org/x/time/rate"
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/buffer"
-	"gvisor.dev/gvisor/pkg/log"
-	cryptorand "gvisor.dev/gvisor/pkg/rand"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/ports"
-	"gvisor.dev/gvisor/pkg/waiter"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/buffer"
+	"github.com/sagernet/gvisor/pkg/log"
+	cryptorand "github.com/sagernet/gvisor/pkg/rand"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/ports"
+	"github.com/sagernet/gvisor/pkg/waiter"
 )
 
 const (

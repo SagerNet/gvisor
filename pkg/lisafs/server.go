@@ -15,8 +15,8 @@
 package lisafs
 
 import (
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 // Server serves a filesystem tree. Multiple connections on different mount

@@ -45,9 +45,9 @@ import (
 	"math/bits"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/cleanup"
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/memutil"
+	"github.com/sagernet/gvisor/pkg/cleanup"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/memutil"
 )
 
 // A ControlBlock contains all the control structures necessary to use an

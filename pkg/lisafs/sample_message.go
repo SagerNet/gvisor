@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"gvisor.dev/gvisor/pkg/marshal/primitive"
+	"github.com/sagernet/gvisor/pkg/marshal/primitive"
 )
 
 // MsgSimple is a sample packed struct which can be used to test message passing.

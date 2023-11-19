@@ -19,7 +19,7 @@ package rawfile
 
 import (
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip"
 )
 
 const maxErrno = 134
