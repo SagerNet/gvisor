@@ -320,15 +320,13 @@ func New(opts *Options) (stack.LinkEndpoint, error) {
 			return nil, err
 		}
 		e.fds = append(e.fds, fdInfo{fd: fd, isSocket: isSocket})
-		if isSocket {
-			if opts.GSOMaxSize != 0 {
-				if opts.GVisorGSOEnabled {
-					e.gsoKind = stack.GVisorGSOSupported
-				} else {
-					e.gsoKind = stack.HostGSOSupported
-				}
-				e.gsoMaxSize = opts.GSOMaxSize
+		if opts.GSOMaxSize != 0 {
+			if opts.GVisorGSOEnabled {
+				e.gsoKind = stack.GVisorGSOSupported
+			} else {
+				e.gsoKind = stack.HostGSOSupported
 			}
+			e.gsoMaxSize = opts.GSOMaxSize
 		}
 		if opts.ProcessorsPerChannel == 0 {
 			opts.ProcessorsPerChannel = max(1, runtime.GOMAXPROCS(0)/len(opts.FDs))
