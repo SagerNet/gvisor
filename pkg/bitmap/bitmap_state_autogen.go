@@ -3,7 +3,7 @@
 package bitmap
 
 import (
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (b *Bitmap) StateTypeName() string {

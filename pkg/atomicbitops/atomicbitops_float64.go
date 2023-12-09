@@ -17,7 +17,7 @@ package atomicbitops
 import (
 	"math"
 
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 // Float64 is an atomic 64-bit floating-point number.

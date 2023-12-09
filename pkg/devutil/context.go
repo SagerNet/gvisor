@@ -14,7 +14,7 @@
 
 package devutil
 
-import "gvisor.dev/gvisor/pkg/context"
+import "github.com/sagernet/gvisor/pkg/context"
 
 // contextID is this package's type for context.Context.Value keys.
 type contextID int

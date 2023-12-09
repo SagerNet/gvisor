@@ -16,7 +16,7 @@ package p9
 
 import (
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/fd"
+	"github.com/sagernet/gvisor/pkg/fd"
 )
 
 // AttacherOptions contains Attacher configuration.
