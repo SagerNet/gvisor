@@ -310,15 +310,13 @@ func New(opts *Options) (stack.LinkEndpoint, error) {
 			return nil, err
 		}
 		e.fds = append(e.fds, fdInfo{fd: fd, isSocket: isSocket})
-		if isSocket {
-			if opts.GSOMaxSize != 0 {
-				if opts.GvisorGSOEnabled {
-					e.gsoKind = stack.GvisorGSOSupported
-				} else {
-					e.gsoKind = stack.HostGSOSupported
-				}
-				e.gsoMaxSize = opts.GSOMaxSize
+		if opts.GSOMaxSize != 0 {
+			if opts.GvisorGSOEnabled {
+				e.gsoKind = stack.GvisorGSOSupported
+			} else {
+				e.gsoKind = stack.HostGSOSupported
 			}
+			e.gsoMaxSize = opts.GSOMaxSize
 		}
 
 		inboundDispatcher, err := createInboundDispatcher(e, fd, isSocket, fid)
