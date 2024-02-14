@@ -56,8 +56,8 @@ import (
 	"strings"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/compressio"
-	"gvisor.dev/gvisor/pkg/state/wire"
+	"github.com/sagernet/gvisor/pkg/compressio"
+	"github.com/sagernet/gvisor/pkg/state/wire"
 )
 
 // keySize is the AES-256 key length.

@@ -3,10 +3,10 @@
 package lisafs
 
 import (
-    "gvisor.dev/gvisor/pkg/abi/linux"
-    "gvisor.dev/gvisor/pkg/gohacks"
-    "gvisor.dev/gvisor/pkg/hostarch"
-    "gvisor.dev/gvisor/pkg/marshal"
+    "github.com/sagernet/gvisor/pkg/abi/linux"
+    "github.com/sagernet/gvisor/pkg/gohacks"
+    "github.com/sagernet/gvisor/pkg/hostarch"
+    "github.com/sagernet/gvisor/pkg/marshal"
     "io"
     "reflect"
     "runtime"

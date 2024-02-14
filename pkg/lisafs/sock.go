@@ -19,8 +19,8 @@ import (
 	"io"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/unet"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/unet"
 )
 
 var (

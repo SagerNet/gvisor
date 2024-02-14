@@ -21,8 +21,8 @@ import (
 	"math"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/memutil"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/memutil"
 )
 
 // An Endpoint provides the ability to synchronously transfer data and control

@@ -22,9 +22,9 @@ import (
 	"sort"
 	"strings"
 
-	"gvisor.dev/gvisor/pkg/bpf"
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/seccomp"
+	"github.com/sagernet/gvisor/pkg/bpf"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/seccomp"
 )
 
 // ProgramDesc describes a program to be compiled.

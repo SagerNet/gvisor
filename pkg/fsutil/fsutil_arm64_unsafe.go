@@ -21,7 +21,7 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/syserr"
+	"github.com/sagernet/gvisor/pkg/syserr"
 )
 
 // StatAt is a convenience wrapper around fstatat(2).
