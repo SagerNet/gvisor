@@ -27,7 +27,6 @@ import (
 	"sync/atomic"
 	"time"
 
-	"golang.org/x/time/rate"
 	"github.com/sagernet/gvisor/pkg/atomicbitops"
 	"github.com/sagernet/gvisor/pkg/buffer"
 	"github.com/sagernet/gvisor/pkg/log"
@@ -36,6 +35,7 @@ import (
 	"github.com/sagernet/gvisor/pkg/tcpip/header"
 	"github.com/sagernet/gvisor/pkg/tcpip/ports"
 	"github.com/sagernet/gvisor/pkg/waiter"
+	"golang.org/x/time/rate"
 )
 
 const (
@@ -744,6 +744,7 @@ func (s *Stack) SetRouteTable(table []tcpip.Route) {
 	defer s.routeMu.Unlock()
 	s.routeTable.Reset()
 	for _, r := range table {
+		r := r
 		s.addRouteLocked(&r)
 	}
 }
