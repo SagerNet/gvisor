@@ -78,7 +78,7 @@ func ListenTCP(s *stack.Stack, addr tcpip.FullAddress, network tcpip.NetworkProt
 	var wq waiter.Queue
 	ep, err := s.NewEndpoint(tcp.ProtocolNumber, network, &wq)
 	if err != nil {
-		return nil, errors.New(err.String())
+		return nil, TranslateNetstackError(err)
 	}
 
 	if err := ep.Bind(addr); err != nil {
@@ -87,7 +87,7 @@ func ListenTCP(s *stack.Stack, addr tcpip.FullAddress, network tcpip.NetworkProt
 			Op:   "bind",
 			Net:  "tcp",
 			Addr: fullToTCPAddr(addr),
-			Err:  errors.New(err.String()),
+			Err:  TranslateNetstackError(err),
 		}
 	}
 
@@ -97,7 +97,7 @@ func ListenTCP(s *stack.Stack, addr tcpip.FullAddress, network tcpip.NetworkProt
 			Op:   "listen",
 			Net:  "tcp",
 			Addr: fullToTCPAddr(addr),
-			Err:  errors.New(err.String()),
+			Err:  TranslateNetstackError(err),
 		}
 	}
 
@@ -287,7 +287,7 @@ func (l *TCPListener) Accept() (net.Conn, error) {
 			Op:   "accept",
 			Net:  "tcp",
 			Addr: l.Addr(),
-			Err:  errors.New(err.String()),
+			Err:  TranslateNetstackError(err),
 		}
 	}
 
@@ -334,7 +334,7 @@ func commonRead(b []byte, ep tcpip.Endpoint, wq *waiter.Queue, deadline <-chan s
 	}
 
 	if err != nil {
-		return 0, errorer.newOpError("read", errors.New(err.String()))
+		return 0, errorer.newOpError("read", TranslateNetstackError(err))
 	}
 
 	if addr != nil {
@@ -408,7 +408,7 @@ func (c *TCPConn) Write(b []byte) (int, error) {
 				}
 			}
 		default:
-			return nbytes, c.newOpError("write", errors.New(err.String()))
+			return nbytes, c.newOpError("write", TranslateNetstackError(err))
 		}
 	}
 	return nbytes, nil
@@ -490,7 +490,7 @@ func DialTCPWithBind(ctx context.Context, s *stack.Stack, localAddr, remoteAddr 
 	var wq waiter.Queue
 	ep, err := s.NewEndpoint(tcp.ProtocolNumber, network, &wq)
 	if err != nil {
-		return nil, errors.New(err.String())
+		return nil, TranslateNetstackError(err)
 	}
 
 	// Create wait queue entry that notifies a channel.
@@ -530,7 +530,7 @@ func DialTCPWithBind(ctx context.Context, s *stack.Stack, localAddr, remoteAddr 
 			Op:   "connect",
 			Net:  "tcp",
 			Addr: fullToTCPAddr(remoteAddr),
-			Err:  errors.New(err.String()),
+			Err:  TranslateNetstackError(err),
 		}
 	}
 
@@ -571,7 +571,7 @@ func DialUDP(s *stack.Stack, laddr, raddr *tcpip.FullAddress, network tcpip.Netw
 	var wq waiter.Queue
 	ep, err := s.NewEndpoint(udp.ProtocolNumber, network, &wq)
 	if err != nil {
-		return nil, errors.New(err.String())
+		return nil, TranslateNetstackError(err)
 	}
 
 	if laddr != nil {
@@ -581,7 +581,7 @@ func DialUDP(s *stack.Stack, laddr, raddr *tcpip.FullAddress, network tcpip.Netw
 				Op:   "bind",
 				Net:  "udp",
 				Addr: fullToUDPAddr(*laddr),
-				Err:  errors.New(err.String()),
+				Err:  TranslateNetstackError(err),
 			}
 		}
 	}
@@ -595,7 +595,7 @@ func DialUDP(s *stack.Stack, laddr, raddr *tcpip.FullAddress, network tcpip.Netw
 				Op:   "connect",
 				Net:  "udp",
 				Addr: fullToUDPAddr(*raddr),
-				Err:  errors.New(err.String()),
+				Err:  TranslateNetstackError(err),
 			}
 		}
 	}
@@ -695,7 +695,7 @@ func (c *UDPConn) WriteTo(b []byte, addr net.Addr) (int, error) {
 		return int(n), nil
 	}
 
-	return int(n), c.newRemoteOpError("write", addr, errors.New(err.String()))
+	return int(n), c.newRemoteOpError("write", addr, TranslateNetstackError(err))
 }
 
 // Close implements net.PacketConn.Close.
