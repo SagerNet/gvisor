@@ -225,3 +225,7 @@ func (r *ForwarderRequest) ForwardedPacketExperimentOption() (uint16, bool) {
 	}
 	return 0, false
 }
+
+func (r *ForwarderRequest) Packet() *stack.PacketBuffer {
+	return r.segment.pkt
+}
