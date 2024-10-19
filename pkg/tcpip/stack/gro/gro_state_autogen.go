@@ -5,7 +5,7 @@ package gro
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (gb *groBucket) StateTypeName() string {

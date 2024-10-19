@@ -17,7 +17,7 @@ package tcpip
 import (
 	"time"
 
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 // jobInstance is a specific instance of Job.

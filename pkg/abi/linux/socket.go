@@ -15,7 +15,7 @@
 package linux
 
 import (
-	"gvisor.dev/gvisor/pkg/marshal"
+	"github.com/sagernet/gvisor/pkg/marshal"
 )
 
 // Address families, from linux/socket.h.

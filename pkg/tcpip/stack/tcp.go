@@ -18,11 +18,11 @@ import (
 	"context"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/internal/tcp"
-	"gvisor.dev/gvisor/pkg/tcpip/seqnum"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/internal/tcp"
+	"github.com/sagernet/gvisor/pkg/tcpip/seqnum"
 )
 
 // contextID is this package's type for context.Context.Value keys.

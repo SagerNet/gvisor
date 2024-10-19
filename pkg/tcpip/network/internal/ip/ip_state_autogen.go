@@ -5,7 +5,7 @@ package ip
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (d *dadState) StateTypeName() string {

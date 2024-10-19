@@ -5,7 +5,7 @@ package veth
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (v *veth) StateTypeName() string {

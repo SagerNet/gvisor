@@ -19,8 +19,8 @@ import (
 	"math"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
 )
 
 // effectivelyInfinity is an initialization value used for round-trip times

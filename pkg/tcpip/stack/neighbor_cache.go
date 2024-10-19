@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"github.com/sagernet/sing/common"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip"
 )
 
 // NeighborCacheSize is the size of the neighborCache. Exceeding this size will

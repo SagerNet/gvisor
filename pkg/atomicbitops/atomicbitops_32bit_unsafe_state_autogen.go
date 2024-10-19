@@ -8,7 +8,7 @@ package atomicbitops
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (i *Int64) StateTypeName() string {

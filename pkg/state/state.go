@@ -54,7 +54,7 @@ import (
 	"reflect"
 	"runtime"
 
-	"gvisor.dev/gvisor/pkg/state/wire"
+	"github.com/sagernet/gvisor/pkg/state/wire"
 )
 
 // objectID is a unique identifier assigned to each object to be serialized.
