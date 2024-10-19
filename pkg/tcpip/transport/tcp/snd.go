@@ -1006,7 +1006,7 @@ func (s *sender) sendData() {
 	}
 	end := s.SndUna.Add(s.SndWnd)
 
-	// Reduce the congestion window to min(IW, cwnd) per RFC 5681, page 10.
+	// Reduce the congestion window min(IW, cwnd) per RFC 5681, page 10.
 	// "A TCP SHOULD set cwnd to no more than RW before beginning
 	// transmission if the TCP has not sent data in the interval exceeding
 	// the retrasmission timeout."

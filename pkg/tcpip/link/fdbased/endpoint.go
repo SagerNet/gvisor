@@ -42,6 +42,7 @@ package fdbased
 
 import (
 	"fmt"
+	"github.com/sagernet/sing/common"
 	"runtime"
 
 	"golang.org/x/sys/unix"
@@ -331,7 +332,7 @@ func New(opts *Options) (stack.LinkEndpoint, error) {
 			}
 		}
 		if opts.ProcessorsPerChannel == 0 {
-			opts.ProcessorsPerChannel = max(1, runtime.GOMAXPROCS(0)/len(opts.FDs))
+			opts.ProcessorsPerChannel = common.Max(1, runtime.GOMAXPROCS(0)/len(opts.FDs))
 		}
 
 		inboundDispatcher, err := createInboundDispatcher(e, fd, isSocket, fid, opts)

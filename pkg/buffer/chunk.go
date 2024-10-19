@@ -16,6 +16,7 @@ package buffer
 
 import (
 	"fmt"
+	"github.com/sagernet/sing/common"
 
 	"gvisor.dev/gvisor/pkg/bits"
 	"gvisor.dev/gvisor/pkg/sync"
@@ -87,7 +88,7 @@ func newChunk(size int) *chunk {
 	} else {
 		pool := getChunkPool(size)
 		c = pool.Get().(*chunk)
-		clear(c.data)
+		common.ClearArray(c.data)
 	}
 	c.InitRefs()
 	return c
