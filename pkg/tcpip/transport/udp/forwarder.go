@@ -103,3 +103,7 @@ func (r *ForwarderRequest) CreateEndpoint(queue *waiter.Queue) (tcpip.Endpoint, 
 
 	return ep, nil
 }
+
+func (r *ForwarderRequest) Packet() *stack.PacketBuffer {
+	return r.pkt
+}
