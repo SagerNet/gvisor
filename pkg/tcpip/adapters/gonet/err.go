@@ -1,5 +1,3 @@
-//go:build linux || windows
-
 package gonet
 
 import (
@@ -30,7 +28,7 @@ func TranslateNetstackError(err tcpip.Error) error {
 	case *tcpip.ErrHostDown:
 		return syscall.EHOSTDOWN
 	case *tcpip.ErrNoNet:
-		return syscall.ENONET
+		return errNoNet
 	case *tcpip.ErrAlreadyBound:
 		return syscall.EINVAL
 	case *tcpip.ErrInvalidEndpointState:
