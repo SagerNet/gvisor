@@ -1,12 +1,10 @@
-//go:build linux || windows
-
 package gonet
 
 import (
 	"fmt"
 	"syscall"
 
-	"github.com/sagernet/gvisor/pkg/tcpip"
+	"gvisor.dev/gvisor/pkg/tcpip"
 )
 
 func TranslateNetstackError(err tcpip.Error) error {
@@ -30,7 +28,7 @@ func TranslateNetstackError(err tcpip.Error) error {
 	case *tcpip.ErrHostDown:
 		return syscall.EHOSTDOWN
 	case *tcpip.ErrNoNet:
-		return syscall.ENONET
+		return errNoNet
 	case *tcpip.ErrAlreadyBound:
 		return syscall.EINVAL
 	case *tcpip.ErrInvalidEndpointState:
