@@ -17,7 +17,7 @@ package fdbased
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/rawfile"
+	"github.com/sagernet/gvisor/pkg/rawfile"
 )
 
 // afterLoad is invoked by stateify.

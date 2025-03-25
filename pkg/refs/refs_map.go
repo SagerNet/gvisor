@@ -17,8 +17,8 @@ package refs
 import (
 	"fmt"
 
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/sync"
 )
 
 var (

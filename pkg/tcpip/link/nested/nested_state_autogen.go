@@ -5,7 +5,7 @@ package nested
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (e *Endpoint) StateTypeName() string {

@@ -28,7 +28,7 @@ package gomaxprocs
 import (
 	"runtime"
 
-	"gvisor.dev/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/log"
 )
 
 var (
