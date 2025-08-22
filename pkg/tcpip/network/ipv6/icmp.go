@@ -654,56 +654,11 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer, hasFragmentHeader bool, r
 
 	case header.ICMPv6EchoRequest:
 		received.echoRequest.Increment()
-		// As per RFC 4291 section 2.7, multicast addresses must not be used as
-		// source addresses in IPv6 packets.
-		localAddr := dstAddr
-		if header.IsV6MulticastAddress(dstAddr) {
-			localAddr = tcpip.Address{}
-		}
-
-		r, err := e.protocol.stack.FindRoute(e.nic.ID(), localAddr, srcAddr, ProtocolNumber, false /* multicastLoop */)
-		if err != nil {
-			// If we cannot find a route to the destination, silently drop the packet.
+		if len(h) < header.ICMPv6EchoMinimumSize {
+			received.invalid.Increment()
 			return
 		}
-		defer r.Release()
-
-		if !e.protocol.allowICMPReply(header.ICMPv6EchoReply) {
-			sent.rateLimited.Increment()
-			return
-		}
-
-		replyPkt := stack.NewPacketBuffer(stack.PacketBufferOptions{
-			ReserveHeaderBytes: int(r.MaxHeaderLength()) + header.ICMPv6EchoMinimumSize,
-			Payload:            pkt.Data().ToBuffer(),
-		})
-		defer replyPkt.DecRef()
-		icmp := header.ICMPv6(replyPkt.TransportHeader().Push(header.ICMPv6EchoMinimumSize))
-		replyPkt.TransportProtocolNumber = header.ICMPv6ProtocolNumber
-		copy(icmp, h)
-		icmp.SetType(header.ICMPv6EchoReply)
-		replyData := replyPkt.Data()
-		icmp.SetChecksum(header.ICMPv6Checksum(header.ICMPv6ChecksumParams{
-			Header:      icmp,
-			Src:         r.LocalAddress(),
-			Dst:         r.RemoteAddress(),
-			PayloadCsum: replyData.Checksum(),
-			PayloadLen:  replyData.Size(),
-		}))
-		replyTClass, _ := iph.TOS()
-		if err := r.WritePacket(stack.NetworkHeaderParams{
-			Protocol: header.ICMPv6ProtocolNumber,
-			TTL:      r.DefaultTTL(),
-			// Even though RFC 4443 does not mention anything about it, Linux uses the
-			// TrafficClass of the received echo request when replying.
-			// https://github.com/torvalds/linux/blob/0280e3c58f9/net/ipv6/icmp.c#L797
-			TOS: replyTClass,
-		}, replyPkt); err != nil {
-			sent.dropped.Increment()
-			return
-		}
-		sent.echoReply.Increment()
-
+		e.dispatcher.DeliverTransportPacket(header.ICMPv6ProtocolNumber, pkt)
 	case header.ICMPv6EchoReply:
 		received.echoReply.Increment()
 		if len(h) < header.ICMPv6EchoMinimumSize {
@@ -711,7 +666,6 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer, hasFragmentHeader bool, r
 			return
 		}
 		e.dispatcher.DeliverTransportPacket(header.ICMPv6ProtocolNumber, pkt)
-
 	case header.ICMPv6TimeExceeded:
 		received.timeExceeded.Increment()
 
