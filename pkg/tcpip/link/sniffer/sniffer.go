@@ -49,9 +49,11 @@ type Endpoint struct {
 	logPrefix  string
 }
 
-var _ stack.GSOEndpoint = (*Endpoint)(nil)
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
-var _ stack.NetworkDispatcher = (*Endpoint)(nil)
+var (
+	_ stack.GSOEndpoint       = (*Endpoint)(nil)
+	_ stack.LinkEndpoint      = (*Endpoint)(nil)
+	_ stack.NetworkDispatcher = (*Endpoint)(nil)
+)
 
 // A Direction indicates whether the packing is being sent or received.
 type Direction int

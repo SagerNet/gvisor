@@ -27,9 +27,9 @@ const (
 
 // msgrcv(2) options. Source: include/uapi/linux/msg.h
 const (
-	MSG_NOERROR = 010000 // No error if message is too big.
-	MSG_EXCEPT  = 020000 // Receive any message except of specified type.
-	MSG_COPY    = 040000 // Copy (not remove) all queue messages.
+	MSG_NOERROR = 0o10000 // No error if message is too big.
+	MSG_EXCEPT  = 0o20000 // Receive any message except of specified type.
+	MSG_COPY    = 0o40000 // Copy (not remove) all queue messages.
 )
 
 // System-wide limits for message queues. Source: include/uapi/linux/msg.h

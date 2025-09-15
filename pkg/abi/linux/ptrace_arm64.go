@@ -18,7 +18,7 @@
 package linux
 
 const (
-	//PSR bits
+	// PSR bits
 	PSR_MODE_EL0t = 0x00000000
 	PSR_MODE_EL1t = 0x00000004
 	PSR_MODE_EL1h = 0x00000005

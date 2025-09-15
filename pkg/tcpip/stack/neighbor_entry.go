@@ -137,7 +137,6 @@ func newNeighborEntry(cache *neighborCache, remoteAddr tcpip.Address, nudState *
 	}
 	n.mu.Unlock()
 	return n
-
 }
 
 // newStaticNeighborEntry creates a neighbor cache entry starting at the

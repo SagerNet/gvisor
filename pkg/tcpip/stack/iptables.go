@@ -665,7 +665,6 @@ func (it *IPTables) checkChain(hook Hook, pkt *PacketBuffer, table Table, ruleId
 		default:
 			panic(fmt.Sprintf("Unknown verdict: %d", verdict))
 		}
-
 	}
 
 	// We got through the entire table without a decision. Default to DROP

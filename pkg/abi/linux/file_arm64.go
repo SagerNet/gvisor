@@ -19,10 +19,10 @@ package linux
 
 // Constants for open(2).
 const (
-	O_DIRECTORY = 000040000
-	O_NOFOLLOW  = 000100000
-	O_DIRECT    = 000200000
-	O_LARGEFILE = 000400000
+	O_DIRECTORY = 0o00040000
+	O_NOFOLLOW  = 0o00100000
+	O_DIRECT    = 0o00200000
+	O_LARGEFILE = 0o00400000
 )
 
 // Stat represents struct stat.

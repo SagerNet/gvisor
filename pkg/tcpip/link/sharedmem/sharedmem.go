@@ -143,8 +143,10 @@ type Options struct {
 	GSOMaxSize uint32
 }
 
-var _ stack.LinkEndpoint = (*endpoint)(nil)
-var _ stack.GSOEndpoint = (*endpoint)(nil)
+var (
+	_ stack.LinkEndpoint = (*endpoint)(nil)
+	_ stack.GSOEndpoint  = (*endpoint)(nil)
+)
 
 // +stateify savable
 type endpoint struct {

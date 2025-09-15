@@ -16,10 +16,10 @@ package linux
 
 const (
 	// SFD_NONBLOCK is a signalfd(2) flag.
-	SFD_NONBLOCK = 00004000
+	SFD_NONBLOCK = 0o0004000
 
 	// SFD_CLOEXEC is a signalfd(2) flag.
-	SFD_CLOEXEC = 02000000
+	SFD_CLOEXEC = 0o2000000
 )
 
 // SignalfdSiginfo is the siginfo encoding for signalfds.

@@ -28,9 +28,9 @@ const (
 //
 // Source: include/uapi/linux/ipc.h
 const (
-	IPC_CREAT  = 00001000
-	IPC_EXCL   = 00002000
-	IPC_NOWAIT = 00004000
+	IPC_CREAT  = 0o0001000
+	IPC_EXCL   = 0o0002000
+	IPC_NOWAIT = 0o0004000
 )
 
 // IPC flags.

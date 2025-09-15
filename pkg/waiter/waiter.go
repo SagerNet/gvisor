@@ -261,8 +261,7 @@ func (q *Queue) IsEmpty() bool {
 
 // NeverReady implements the Waitable interface but is never ready. Otherwise,
 // this is exactly the same as AlwaysReady.
-type NeverReady struct {
-}
+type NeverReady struct{}
 
 // Readiness always returns 0 because this object is never ready.
 func (*NeverReady) Readiness(EventMask) EventMask {

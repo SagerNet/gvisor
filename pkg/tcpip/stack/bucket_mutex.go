@@ -25,7 +25,6 @@ type bucketlockNameIndex int
 const (
 	bucketLockOthertuple = bucketlockNameIndex(0)
 )
-const ()
 
 // Lock locks m.
 // +checklocksignore

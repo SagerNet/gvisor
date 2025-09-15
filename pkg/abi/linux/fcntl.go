@@ -47,7 +47,7 @@ const (
 
 // Flags for fcntl.
 const (
-	FD_CLOEXEC = 00000001
+	FD_CLOEXEC = 0o0000001
 )
 
 // Flock is the lock structure for F_SETLK.
