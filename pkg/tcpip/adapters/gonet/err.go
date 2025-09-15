@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"syscall"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip"
 )
 
 func TranslateNetstackError(err tcpip.Error) error {

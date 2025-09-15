@@ -18,9 +18,9 @@ import (
 	"encoding/binary"
 
 	"github.com/google/btree"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/checksum"
-	"gvisor.dev/gvisor/pkg/tcpip/seqnum"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/checksum"
+	"github.com/sagernet/gvisor/pkg/tcpip/seqnum"
 )
 
 // These constants are the offsets of the respective fields in the TCP header.
@@ -350,7 +350,7 @@ func (b TCP) SetUrgentPointer(urgentPointer uint16) {
 // and the checksum of the segment data.
 func (b TCP) CalculateChecksum(partialChecksum uint16) uint16 {
 	// Calculate the rest of the checksum.
-	//return checksum.Checksum(b[:b.DataOffset()], partialChecksum)
+	// return checksum.Checksum(b[:b.DataOffset()], partialChecksum)
 	xsum := checksum.Checksum(b[:TCPChecksumOffset], partialChecksum)
 	xsum = checksum.Checksum(b[TCPChecksumOffset+2:b.DataOffset()], xsum)
 	return xsum
@@ -360,7 +360,7 @@ func (b TCP) CalculateChecksum(partialChecksum uint16) uint16 {
 func (b TCP) IsChecksumValid(src, dst tcpip.Address, payloadChecksum, payloadLength uint16) bool {
 	xsum := PseudoHeaderChecksum(TCPProtocolNumber, src, dst, uint16(b.DataOffset())+payloadLength)
 	xsum = checksum.Combine(xsum, payloadChecksum)
-	//return b.CalculateChecksum(xsum) == 0xffff
+	// return b.CalculateChecksum(xsum) == 0xffff
 	return checksum.Checksum(b[:b.DataOffset()], xsum) == 0xffff
 }
 

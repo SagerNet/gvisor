@@ -15,8 +15,8 @@
 package linux
 
 import (
-	"gvisor.dev/gvisor/pkg/bits"
-	"gvisor.dev/gvisor/pkg/hostarch"
+	"github.com/sagernet/gvisor/pkg/bits"
+	"github.com/sagernet/gvisor/pkg/hostarch"
 )
 
 const (

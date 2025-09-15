@@ -17,8 +17,8 @@ package stack
 import (
 	"fmt"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
 )
 
 // Route represents a route through the networking stack to a given destination.

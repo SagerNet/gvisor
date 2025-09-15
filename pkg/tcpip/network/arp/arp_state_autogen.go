@@ -5,7 +5,7 @@ package arp
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (e *endpoint) StateTypeName() string {

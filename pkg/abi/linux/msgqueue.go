@@ -15,7 +15,7 @@
 package linux
 
 import (
-	"gvisor.dev/gvisor/pkg/marshal/primitive"
+	"github.com/sagernet/gvisor/pkg/marshal/primitive"
 )
 
 // Linux-specific control commands. Source: include/uapi/linux/msg.h

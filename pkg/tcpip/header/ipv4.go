@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/checksum"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/checksum"
 )
 
 // RFC 971 defines the fields of the IPv4 header on page 11 using the following
@@ -456,7 +456,7 @@ func (b IPv4) SetDestinationAddress(addr tcpip.Address) {
 
 // CalculateChecksum calculates the checksum of the IPv4 header.
 func (b IPv4) CalculateChecksum() uint16 {
-	//return checksum.Checksum(b[:b.HeaderLength()], 0)
+	// return checksum.Checksum(b[:b.HeaderLength()], 0)
 	xsum0 := checksum.Checksum(b[:xsum], 0)
 	xsum0 = checksum.Checksum(b[xsum+2:b.HeaderLength()], xsum0)
 	return xsum0
