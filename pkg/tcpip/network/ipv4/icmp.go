@@ -349,6 +349,7 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer) {
 		e.dispatcher.DeliverTransportPacket(header.ICMPv4ProtocolNumber, pkt)
 	case header.ICMPv4DstUnreachable:
 		received.dstUnreachable.Increment()
+		e.dispatcher.DeliverTransportPacket(header.ICMPv4ProtocolNumber, pkt)
 
 		mtu := h.MTU()
 		code := h.Code()
@@ -390,6 +391,7 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer) {
 
 	case header.ICMPv4TimeExceeded:
 		received.timeExceeded.Increment()
+		e.dispatcher.DeliverTransportPacket(header.ICMPv4ProtocolNumber, pkt)
 
 	case header.ICMPv4ParamProblem:
 		received.paramProblem.Increment()

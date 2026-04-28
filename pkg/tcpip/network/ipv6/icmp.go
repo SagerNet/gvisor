@@ -334,6 +334,7 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer, hasFragmentHeader bool, r
 
 	case header.ICMPv6DstUnreachable:
 		received.dstUnreachable.Increment()
+		e.dispatcher.DeliverTransportPacket(header.ICMPv6ProtocolNumber, pkt)
 		switch h.Code() {
 		case header.ICMPv6NetworkUnreachable:
 			e.handleControl(&icmpv6DestinationNetworkUnreachableSockError{}, pkt)
@@ -668,6 +669,7 @@ func (e *endpoint) handleICMP(pkt *stack.PacketBuffer, hasFragmentHeader bool, r
 		e.dispatcher.DeliverTransportPacket(header.ICMPv6ProtocolNumber, pkt)
 	case header.ICMPv6TimeExceeded:
 		received.timeExceeded.Increment()
+		e.dispatcher.DeliverTransportPacket(header.ICMPv6ProtocolNumber, pkt)
 
 	case header.ICMPv6ParamProblem:
 		received.paramProblem.Increment()
