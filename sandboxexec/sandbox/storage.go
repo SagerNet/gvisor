@@ -126,7 +126,7 @@ func (f *FilesystemStorage) PutWriter(ctx context.Context, snapshotID SnapshotID
 		return nil, fmt.Errorf("invalid asset name: %w", err)
 	}
 	path := filepath.Join(f.rootDir, safeID, safeAsset)
-	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
 		return nil, err
 	}
 	return os.Create(path)

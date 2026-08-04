@@ -63,7 +63,7 @@ const (
 	ENOTEMPTY
 	ELOOP  // 40
 	_      // Skip for EWOULDBLOCK = EAGAIN.
-	ENOMSG //42
+	ENOMSG // 42
 	EIDRM
 	ECHRNG
 	EL2NSYNC

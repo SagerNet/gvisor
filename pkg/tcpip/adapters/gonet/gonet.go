@@ -148,6 +148,7 @@ func (d *deadlineTimer) readCancel() <-chan struct{} {
 	d.mu.Unlock()
 	return c
 }
+
 func (d *deadlineTimer) writeCancel() <-chan struct{} {
 	d.mu.Lock()
 	c := d.writeCancelCh

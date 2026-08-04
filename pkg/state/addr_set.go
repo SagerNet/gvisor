@@ -492,7 +492,6 @@ func (s *addrSet) TryInsertWithoutMergingRange(r addrRange, val *objectEncodeSta
 // All existing iterators (including seg, but not including the returned
 // iterator) are invalidated.
 func (s *addrSet) Remove(seg addrIterator) addrGapIterator {
-
 	if seg.node.hasChildren {
 
 		victim := seg.PrevSegment()
@@ -1166,7 +1165,6 @@ func (n *addrnode) rebalanceAfterRemove(gap addrGapIterator) addrGapIterator {
 			return gap
 		}
 		if n.parent == nil {
-
 			return gap
 		}
 
@@ -1325,7 +1323,6 @@ func (n *addrnode) updateMaxGapLeaf() {
 	}
 	max := n.calculateMaxGapLeaf()
 	if max == n.maxGap.Get() {
-
 		return
 	}
 	oldMax := n.maxGap.Get()
@@ -1334,7 +1331,6 @@ func (n *addrnode) updateMaxGapLeaf() {
 
 		for p := n.parent; p != nil; p = p.parent {
 			if p.maxGap.Get() >= max {
-
 				break
 			}
 
@@ -1345,13 +1341,11 @@ func (n *addrnode) updateMaxGapLeaf() {
 
 	for p := n.parent; p != nil; p = p.parent {
 		if p.maxGap.Get() > oldMax {
-
 			break
 		}
 
 		parentNewMax := p.calculateMaxGapInternal()
 		if p.maxGap.Get() == parentNewMax {
-
 			break
 		}
 
@@ -1365,10 +1359,8 @@ func (n *addrnode) updateMaxGapLeaf() {
 // Precondition: trackGaps must be 1.
 func (n *addrnode) updateMaxGapLocal() {
 	if !n.hasChildren {
-
 		n.maxGap.Set(n.calculateMaxGapLeaf())
 	} else {
-
 		n.maxGap.Set(n.calculateMaxGapInternal())
 	}
 }
@@ -1619,7 +1611,6 @@ func (seg addrIterator) NextSegment() addrIterator {
 // PrevGap returns the gap immediately before the iterated segment.
 func (seg addrIterator) PrevGap() addrGapIterator {
 	if seg.node.hasChildren {
-
 		return seg.node.children[seg.index].lastSegment().NextGap()
 	}
 	return addrGapIterator(seg)
@@ -1799,7 +1790,6 @@ func (gap addrGapIterator) nextLargeEnoughGapHelper(minSize uintptr) addrGapIter
 		}
 		gap.node, gap.index = gap.node.parent, gap.node.parentIndex
 		if gap.node != nil && gap.index == gap.node.nrSegments {
-
 			gap.node, gap.index = gap.node.parent, gap.node.parentIndex
 		}
 	}
@@ -1854,7 +1844,6 @@ func (gap addrGapIterator) prevLargeEnoughGapHelper(minSize uintptr) addrGapIter
 		}
 		gap.node, gap.index = gap.node.parent, gap.node.parentIndex
 		if gap.node != nil && gap.index == 0 {
-
 			gap.node, gap.index = gap.node.parent, gap.node.parentIndex
 		}
 	}
@@ -1887,7 +1876,6 @@ func addrsegmentAfterPosition(n *addrnode, i int) addrIterator {
 }
 
 func addrzeroValueSlice(slice []*objectEncodeState) {
-
 	for i := range slice {
 		addrSetFunctions{}.ClearValue(&slice[i])
 	}
@@ -2027,6 +2015,7 @@ func (s *addrSet) countSegments() (segments int) {
 	}
 	return segments
 }
+
 func (s *addrSet) saveRoot() []addrFlatSegment {
 	fs := s.ExportSlice()
 

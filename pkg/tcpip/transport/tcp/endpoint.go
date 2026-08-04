@@ -1836,7 +1836,6 @@ func (e *Endpoint) OnSetReceiveBufferSize(rcvBufSz, oldSz int64) (newSz int64, p
 		if e.EndpointState().connected() && sendNonZeroWindowUpdate {
 			e.rcv.nonZeroWindow()
 		}
-
 	}
 	e.UnlockUser()
 	return rcvBufSz, postSet

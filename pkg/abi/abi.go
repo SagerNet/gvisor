@@ -41,5 +41,4 @@ func (o OS) String() string {
 }
 
 // ABI is an interface that defines OS-specific interactions.
-type ABI interface {
-}
+type ABI interface{}

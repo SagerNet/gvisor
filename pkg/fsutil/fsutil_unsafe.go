@@ -49,7 +49,6 @@ func Utimensat(dirFd int, name string, times [2]unix.Timespec, flags int) error 
 		uintptr(flags),
 		0,
 		0); errno != 0 {
-
 		return syserr.FromHost(errno).ToError()
 	}
 	return nil
@@ -82,7 +81,6 @@ func RenameAt2(oldDirFD int, oldName string, newDirFD int, newName string, flags
 		uintptr(newNamePtr),
 		uintptr(flags),
 		0); errno != 0 {
-
 		return syserr.FromHost(errno).ToError()
 	}
 	return nil

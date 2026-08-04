@@ -43,7 +43,6 @@ func StatAt(dirFd int, name string) (unix.Stat_t, error) {
 		unix.AT_SYMLINK_NOFOLLOW,
 		0,
 		0); errno != 0 {
-
 		return unix.Stat_t{}, syserr.FromHost(errno).ToError()
 	}
 	return stat, nil

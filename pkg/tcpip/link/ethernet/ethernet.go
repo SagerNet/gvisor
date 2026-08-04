@@ -23,8 +23,10 @@ import (
 	"gvisor.dev/gvisor/pkg/tcpip/stack"
 )
 
-var _ stack.NetworkDispatcher = (*Endpoint)(nil)
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
+var (
+	_ stack.NetworkDispatcher = (*Endpoint)(nil)
+	_ stack.LinkEndpoint      = (*Endpoint)(nil)
+)
 
 // New returns an ethernet link endpoint that wraps an inner link endpoint.
 func New(ep stack.LinkEndpoint) *Endpoint {

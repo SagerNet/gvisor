@@ -200,10 +200,8 @@ func HostFeatureSet() FeatureSet {
 	return hostFeatureSet
 }
 
-var (
-	// cpuFreqMHz is the native CPU frequency.
-	cpuFreqMHz float64
-)
+// cpuFreqMHz is the native CPU frequency.
+var cpuFreqMHz float64
 
 // Reads max cpu frequency from host /proc/cpuinfo. Must run before syscall
 // filter installation. This value is used to create the fake /proc/cpuinfo

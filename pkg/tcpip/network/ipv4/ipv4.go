@@ -75,13 +75,15 @@ var martianPacketLogger = log.BasicRateLimitedLogger(time.Minute)
 
 var ipv4BroadcastAddr = header.IPv4Broadcast.WithPrefix()
 
-var _ stack.LinkResolvableNetworkEndpoint = (*endpoint)(nil)
-var _ stack.ForwardingNetworkEndpoint = (*endpoint)(nil)
-var _ stack.MulticastForwardingNetworkEndpoint = (*endpoint)(nil)
-var _ stack.GroupAddressableEndpoint = (*endpoint)(nil)
-var _ stack.AddressableEndpoint = (*endpoint)(nil)
-var _ stack.NetworkEndpoint = (*endpoint)(nil)
-var _ IGMPEndpoint = (*endpoint)(nil)
+var (
+	_ stack.LinkResolvableNetworkEndpoint      = (*endpoint)(nil)
+	_ stack.ForwardingNetworkEndpoint          = (*endpoint)(nil)
+	_ stack.MulticastForwardingNetworkEndpoint = (*endpoint)(nil)
+	_ stack.GroupAddressableEndpoint           = (*endpoint)(nil)
+	_ stack.AddressableEndpoint                = (*endpoint)(nil)
+	_ stack.NetworkEndpoint                    = (*endpoint)(nil)
+	_ IGMPEndpoint                             = (*endpoint)(nil)
+)
 
 // +checklocksalias:igmp.ep.mu=mu
 // +stateify savable
@@ -1624,10 +1626,12 @@ func (e *endpoint) Stats() stack.NetworkEndpointStats {
 	return &e.stats.localStats
 }
 
-var _ stack.NetworkProtocol = (*protocol)(nil)
-var _ stack.MulticastForwardingNetworkProtocol = (*protocol)(nil)
-var _ stack.RejectIPv4WithHandler = (*protocol)(nil)
-var _ fragmentation.TimeoutHandler = (*protocol)(nil)
+var (
+	_ stack.NetworkProtocol                    = (*protocol)(nil)
+	_ stack.MulticastForwardingNetworkProtocol = (*protocol)(nil)
+	_ stack.RejectIPv4WithHandler              = (*protocol)(nil)
+	_ fragmentation.TimeoutHandler             = (*protocol)(nil)
+)
 
 // +stateify savable
 type protocol struct {

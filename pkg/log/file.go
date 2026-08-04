@@ -47,12 +47,12 @@ func OpenFile(logPattern string, flags int, opts FileOpts) (*os.File, error) {
 
 	// Create parent directory if it doesn't exist.
 	dir := filepath.Dir(logPath)
-	if err := os.MkdirAll(dir, 0755); err != nil {
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return nil, fmt.Errorf("error creating dir %q: %v", dir, err)
 	}
 
 	// Open file with the specified flags.
-	f, err := os.OpenFile(logPath, flags, 0644)
+	f, err := os.OpenFile(logPath, flags, 0o644)
 	if err != nil {
 		return nil, fmt.Errorf("error opening file %q: %v", logPath, err)
 	}

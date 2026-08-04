@@ -233,7 +233,7 @@ func New(ctx context.Context, opts ...Option) (*Sandbox, error) {
 
 	runDir := options.runtimeDir
 	stateDir := filepath.Join(runDir, "state")
-	if err := os.MkdirAll(stateDir, 0700); err != nil {
+	if err := os.MkdirAll(stateDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create sandbox state directory: %v", err)
 	}
 	// Verify that the state directory actually has 0700 permissions.
@@ -241,8 +241,8 @@ func New(ctx context.Context, opts ...Option) (*Sandbox, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to stat sandbox state directory: %v", err)
 	}
-	if fi.Mode().Perm() != 0700 {
-		return nil, fmt.Errorf("sandbox state directory has incorrect permissions: got %v, want %v", fi.Mode().Perm(), os.FileMode(0700))
+	if fi.Mode().Perm() != 0o700 {
+		return nil, fmt.Errorf("sandbox state directory has incorrect permissions: got %v, want %v", fi.Mode().Perm(), os.FileMode(0o700))
 	}
 
 	var annotations map[string]string
@@ -286,7 +286,7 @@ func New(ctx context.Context, opts ...Option) (*Sandbox, error) {
 
 		case FilesystemSnapshot:
 			fsRestoreDir := filepath.Join(stateDir, "fs-restore")
-			if err := os.MkdirAll(fsRestoreDir, 0700); err != nil {
+			if err := os.MkdirAll(fsRestoreDir, 0o700); err != nil {
 				return nil, err
 			}
 			// TODO: List assets in store and download all filesystem image assets to fsRestoreDir.
@@ -294,7 +294,7 @@ func New(ctx context.Context, opts ...Option) (*Sandbox, error) {
 
 		case CheckpointRestore:
 			checkpointRestoreDir = filepath.Join(stateDir, "checkpoint-restore")
-			if err := os.MkdirAll(checkpointRestoreDir, 0700); err != nil {
+			if err := os.MkdirAll(checkpointRestoreDir, 0o700); err != nil {
 				return nil, err
 			}
 			// TODO: List assets in store and download all checkpoint image assets to checkpointRestoreDir.

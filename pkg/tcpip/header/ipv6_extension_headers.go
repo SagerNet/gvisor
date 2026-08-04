@@ -696,7 +696,6 @@ func (i *IPv6PayloadIterator) nextHeaderData(ignoreLength bool, bytes []byte) (I
 
 	var length uint8
 	length, err = rdr.ReadByte()
-
 	if err != nil {
 		if ignoreLength {
 			return 0, nil, fmt.Errorf("error when reading the Length field for extension header with id = %d: %w", i.nextHdrIdentifier, err)

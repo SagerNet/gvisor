@@ -1199,8 +1199,10 @@ func (s IPv4OptionsSerializer) Serialize(b []byte) uint8 {
 	return padded
 }
 
-var _ IPv4SerializableOptionPayload = (*IPv4SerializableRouterAlertOption)(nil)
-var _ IPv4SerializableOption = (*IPv4SerializableRouterAlertOption)(nil)
+var (
+	_ IPv4SerializableOptionPayload = (*IPv4SerializableRouterAlertOption)(nil)
+	_ IPv4SerializableOption        = (*IPv4SerializableRouterAlertOption)(nil)
+)
 
 // IPv4SerializableRouterAlertOption provides serialization of the Router Alert
 // IPv4 option according to RFC 2113.
@@ -1222,8 +1224,10 @@ func (o *IPv4SerializableRouterAlertOption) serializeInto(buffer []byte) uint8 {
 	return o.length()
 }
 
-var _ IPv4SerializableOptionPayload = (*IPv4SerializableExperimentOption)(nil)
-var _ IPv4SerializableOption = (*IPv4SerializableExperimentOption)(nil)
+var (
+	_ IPv4SerializableOptionPayload = (*IPv4SerializableExperimentOption)(nil)
+	_ IPv4SerializableOption        = (*IPv4SerializableExperimentOption)(nil)
+)
 
 // IPv4SerializableExperimentOption provides serialization for the IPv4
 // Experiment option.

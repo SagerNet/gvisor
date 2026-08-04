@@ -126,14 +126,14 @@ func IsBDF(name string) bool { return bdfRE.MatchString(name) }
 // Save serializes the snapshot to dst, creating parent directories.
 func (s *Snapshot) Save(dst string) error {
 	dir := filepath.Dir(dst)
-	if err := os.MkdirAll(dir, 0755); err != nil {
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return fmt.Errorf("creating %q: %w", dir, err)
 	}
 	b, err := json.Marshal(s)
 	if err != nil {
 		return fmt.Errorf("marshaling RDMA sysfs snapshot: %w", err)
 	}
-	return os.WriteFile(dst, b, 0644)
+	return os.WriteFile(dst, b, 0o644)
 }
 
 // Load deserializes a snapshot from src. Returns (nil, nil) if the file

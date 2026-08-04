@@ -32,9 +32,11 @@ type ReadWriter struct {
 	fd atomicbitops.Int64
 }
 
-var _ io.ReadWriter = (*ReadWriter)(nil)
-var _ io.ReaderAt = (*ReadWriter)(nil)
-var _ io.WriterAt = (*ReadWriter)(nil)
+var (
+	_ io.ReadWriter = (*ReadWriter)(nil)
+	_ io.ReaderAt   = (*ReadWriter)(nil)
+	_ io.WriterAt   = (*ReadWriter)(nil)
+)
 
 // NewReadWriter creates a ReadWriter for fd.
 func NewReadWriter(fd int) *ReadWriter {

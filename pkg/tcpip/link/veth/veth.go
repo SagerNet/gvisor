@@ -24,8 +24,10 @@ import (
 // DefaultBacklogSize is the default size of a veth device's buffer.
 const DefaultBacklogSize = 1000
 
-var _ stack.LinkEndpoint = (*Endpoint)(nil)
-var _ stack.GSOEndpoint = (*Endpoint)(nil)
+var (
+	_ stack.LinkEndpoint = (*Endpoint)(nil)
+	_ stack.GSOEndpoint  = (*Endpoint)(nil)
+)
 
 // +stateify savable
 type veth struct {
@@ -109,7 +111,6 @@ func NewPair(mtu, backlogQueueSize uint32) (*Endpoint, *Endpoint) {
 			t.e.InjectInbound(t.protocol, t.pkt)
 			t.pkt.DecRef()
 		}
-
 	}()
 	return a, b
 }

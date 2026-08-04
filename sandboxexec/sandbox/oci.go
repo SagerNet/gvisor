@@ -41,7 +41,7 @@ func NewBundle(cfg BundleConfig) (string, error) {
 	bundleDir := filepath.Join(cfg.RuntimeDir, cfg.ID)
 	rootfsDir := filepath.Join(bundleDir, "rootfs")
 
-	if err := os.MkdirAll(rootfsDir, 0755); err != nil {
+	if err := os.MkdirAll(rootfsDir, 0o755); err != nil {
 		return "", fmt.Errorf("failed to create bundle directories: %w", err)
 	}
 

@@ -35,9 +35,11 @@ const (
 	ProtocolNumber = header.ARPProtocolNumber
 )
 
-var _ stack.DuplicateAddressDetector = (*endpoint)(nil)
-var _ stack.LinkAddressResolver = (*endpoint)(nil)
-var _ ip.DADProtocol = (*endpoint)(nil)
+var (
+	_ stack.DuplicateAddressDetector = (*endpoint)(nil)
+	_ stack.LinkAddressResolver      = (*endpoint)(nil)
+	_ ip.DADProtocol                 = (*endpoint)(nil)
+)
 
 // ARP endpoints need to implement stack.NetworkEndpoint because the stack
 // considers the layer above the link-layer a network layer; the only

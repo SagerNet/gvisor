@@ -7,11 +7,12 @@
 package sandbox_options_go_proto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -764,21 +765,23 @@ func file_sandboxexec_proto_sandbox_options_proto_rawDescGZIP() []byte {
 	return file_sandboxexec_proto_sandbox_options_proto_rawDescData
 }
 
-var file_sandboxexec_proto_sandbox_options_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_sandboxexec_proto_sandbox_options_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-var file_sandboxexec_proto_sandbox_options_proto_goTypes = []any{
-	(EnvVar_EnvVarPolicy)(0),         // 0: cloud_gvisor_sandboxexec.EnvVar.EnvVarPolicy
-	(PortMapping_PortMappingType)(0), // 1: cloud_gvisor_sandboxexec.PortMapping.PortMappingType
-	(*SandboxOptions)(nil),           // 2: cloud_gvisor_sandboxexec.SandboxOptions
-	(*NetworkingOptions)(nil),        // 3: cloud_gvisor_sandboxexec.NetworkingOptions
-	(*DebugOptions)(nil),             // 4: cloud_gvisor_sandboxexec.DebugOptions
-	(*EnvVar)(nil),                   // 5: cloud_gvisor_sandboxexec.EnvVar
-	(*PortMapping)(nil),              // 6: cloud_gvisor_sandboxexec.PortMapping
-	(*MountOptions)(nil),             // 7: cloud_gvisor_sandboxexec.MountOptions
-	(*Mount)(nil),                    // 8: cloud_gvisor_sandboxexec.Mount
-	(*HostMount)(nil),                // 9: cloud_gvisor_sandboxexec.HostMount
-	(*SandboxTmpfsMount)(nil),        // 10: cloud_gvisor_sandboxexec.SandboxTmpfsMount
-}
+var (
+	file_sandboxexec_proto_sandbox_options_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+	file_sandboxexec_proto_sandbox_options_proto_msgTypes  = make([]protoimpl.MessageInfo, 9)
+	file_sandboxexec_proto_sandbox_options_proto_goTypes   = []any{
+		(EnvVar_EnvVarPolicy)(0),         // 0: cloud_gvisor_sandboxexec.EnvVar.EnvVarPolicy
+		(PortMapping_PortMappingType)(0), // 1: cloud_gvisor_sandboxexec.PortMapping.PortMappingType
+		(*SandboxOptions)(nil),           // 2: cloud_gvisor_sandboxexec.SandboxOptions
+		(*NetworkingOptions)(nil),        // 3: cloud_gvisor_sandboxexec.NetworkingOptions
+		(*DebugOptions)(nil),             // 4: cloud_gvisor_sandboxexec.DebugOptions
+		(*EnvVar)(nil),                   // 5: cloud_gvisor_sandboxexec.EnvVar
+		(*PortMapping)(nil),              // 6: cloud_gvisor_sandboxexec.PortMapping
+		(*MountOptions)(nil),             // 7: cloud_gvisor_sandboxexec.MountOptions
+		(*Mount)(nil),                    // 8: cloud_gvisor_sandboxexec.Mount
+		(*HostMount)(nil),                // 9: cloud_gvisor_sandboxexec.HostMount
+		(*SandboxTmpfsMount)(nil),        // 10: cloud_gvisor_sandboxexec.SandboxTmpfsMount
+	}
+)
 var file_sandboxexec_proto_sandbox_options_proto_depIdxs = []int32{
 	8,  // 0: cloud_gvisor_sandboxexec.SandboxOptions.mounts:type_name -> cloud_gvisor_sandboxexec.Mount
 	3,  // 1: cloud_gvisor_sandboxexec.SandboxOptions.networking_options:type_name -> cloud_gvisor_sandboxexec.NetworkingOptions

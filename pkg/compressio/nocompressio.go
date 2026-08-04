@@ -196,8 +196,10 @@ type SimpleWriter struct {
 	closed bool
 }
 
-var _ io.Writer = (*SimpleWriter)(nil)
-var _ io.Closer = (*SimpleWriter)(nil)
+var (
+	_ io.Writer = (*SimpleWriter)(nil)
+	_ io.Closer = (*SimpleWriter)(nil)
+)
 
 // NewSimpleWriter returns a new non-compressing writer. If key is non-nil,
 // hash values are generated and written out for compressed bytes. See package
