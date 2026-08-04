@@ -19,7 +19,7 @@ import (
 	"math/rand"
 	"time"
 
-	cryptorand "gvisor.dev/gvisor/pkg/rand"
+	cryptorand "github.com/sagernet/gvisor/pkg/rand"
 )
 
 // beforeSave is invoked by stateify.

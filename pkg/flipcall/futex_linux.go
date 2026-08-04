@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"runtime"
 
+	"github.com/sagernet/gvisor/pkg/abi/linux"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux"
 )
 
 func (ep *Endpoint) futexSetPeerActive() error {

@@ -17,9 +17,9 @@ import (
 	"runtime"
 	"unsafe"
 
-	"gvisor.dev/gvisor/pkg/gohacks"
-	"gvisor.dev/gvisor/pkg/hostarch"
-	"gvisor.dev/gvisor/pkg/marshal"
+	"github.com/sagernet/gvisor/pkg/gohacks"
+	"github.com/sagernet/gvisor/pkg/hostarch"
+	"github.com/sagernet/gvisor/pkg/marshal"
 )
 
 // Marshallable types used by this file.

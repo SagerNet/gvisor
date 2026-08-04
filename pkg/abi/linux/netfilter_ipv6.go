@@ -18,8 +18,8 @@ import (
 	"math"
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/marshal"
-	"gvisor.dev/gvisor/pkg/marshal/primitive"
+	"github.com/sagernet/gvisor/pkg/marshal"
+	"github.com/sagernet/gvisor/pkg/marshal/primitive"
 )
 
 // This file contains structures required to support IPv6 netfilter and

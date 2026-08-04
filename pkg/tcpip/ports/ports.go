@@ -19,10 +19,10 @@ package ports
 import (
 	"math"
 
-	"gvisor.dev/gvisor/pkg/rand"
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/rand"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
 )
 
 const (

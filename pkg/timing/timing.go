@@ -23,8 +23,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"gvisor.dev/gvisor/pkg/atomicbitops"
-	"gvisor.dev/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/atomicbitops"
+	"github.com/sagernet/gvisor/pkg/log"
 )
 
 const (

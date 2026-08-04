@@ -782,6 +782,7 @@ var (
 		(*SandboxTmpfsMount)(nil),        // 10: cloud_gvisor_sandboxexec.SandboxTmpfsMount
 	}
 )
+
 var file_sandboxexec_proto_sandbox_options_proto_depIdxs = []int32{
 	8,  // 0: cloud_gvisor_sandboxexec.SandboxOptions.mounts:type_name -> cloud_gvisor_sandboxexec.Mount
 	3,  // 1: cloud_gvisor_sandboxexec.SandboxOptions.networking_options:type_name -> cloud_gvisor_sandboxexec.NetworkingOptions

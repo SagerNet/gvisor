@@ -15,7 +15,7 @@
 // Package qdisc provides shared building blocks used by queueing disciplines.
 package qdisc
 
-import "gvisor.dev/gvisor/pkg/tcpip/stack"
+import "github.com/sagernet/gvisor/pkg/tcpip/stack"
 
 // PacketBufferCircularList is a slice-backed circular list. All operations are
 // O(1) unless otherwise noted. It only allocates once, during the call to

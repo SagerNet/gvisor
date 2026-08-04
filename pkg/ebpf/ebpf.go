@@ -18,7 +18,7 @@
 package ebpf
 
 import (
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/abi/linux"
 )
 
 // BPFID is a sequential, globally-unique (though unloaded

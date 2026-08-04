@@ -19,7 +19,7 @@ import (
 	"strings"
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/abi"
+	"github.com/sagernet/gvisor/pkg/abi"
 )
 
 // Constants for open(2).

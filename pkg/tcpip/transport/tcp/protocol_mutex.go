@@ -3,8 +3,8 @@ package tcp
 import (
 	"reflect"
 
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/sync/locking"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/sync/locking"
 )
 
 // RWMutex is sync.RWMutex with the correctness validator.

@@ -15,7 +15,7 @@
 package ebpf
 
 import (
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/abi/linux"
 )
 
 // CgroupAttachType is an attachment type that is valid for a cgroup eBPF program.

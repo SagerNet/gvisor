@@ -18,9 +18,9 @@ import (
 	"context"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/log"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/log"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
 )
 
 // saveReceivedAt is invoked by stateify.

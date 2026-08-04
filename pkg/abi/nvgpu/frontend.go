@@ -17,7 +17,7 @@ package nvgpu
 import (
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/marshal"
+	"github.com/sagernet/gvisor/pkg/marshal"
 )
 
 // NV_IOCTL_MAGIC is the "canonical" IOC_TYPE for frontend ioctls.

@@ -17,7 +17,7 @@ package linux
 import (
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/marshal"
+	"github.com/sagernet/gvisor/pkg/marshal"
 )
 
 // EBPFInstruction is the userspace representation of an eBPF instruction that has not

@@ -18,12 +18,12 @@ import (
 	"fmt"
 	"io"
 
-	"gvisor.dev/gvisor/pkg/buffer"
-	"gvisor.dev/gvisor/pkg/sync"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/seqnum"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/sagernet/gvisor/pkg/buffer"
+	"github.com/sagernet/gvisor/pkg/sync"
+	"github.com/sagernet/gvisor/pkg/tcpip"
+	"github.com/sagernet/gvisor/pkg/tcpip/header"
+	"github.com/sagernet/gvisor/pkg/tcpip/seqnum"
+	"github.com/sagernet/gvisor/pkg/tcpip/stack"
 )
 
 // queueFlags are used to indicate which queue of an endpoint a particular segment

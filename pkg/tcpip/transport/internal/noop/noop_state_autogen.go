@@ -5,7 +5,7 @@ package noop
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (ep *endpoint) StateTypeName() string {

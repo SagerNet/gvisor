@@ -5,7 +5,7 @@ package pipe
 import (
 	"context"
 
-	"gvisor.dev/gvisor/pkg/state"
+	"github.com/sagernet/gvisor/pkg/state"
 )
 
 func (p *pipe) StateTypeName() string {

@@ -17,8 +17,8 @@ package stack
 import (
 	"context"
 
+	"github.com/sagernet/gvisor/pkg/tcpip"
 	"golang.org/x/time/rate"
-	"gvisor.dev/gvisor/pkg/tcpip"
 )
 
 const (

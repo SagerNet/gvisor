@@ -18,7 +18,7 @@ import (
 	"math"
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/hostarch"
+	"github.com/sagernet/gvisor/pkg/hostarch"
 )
 
 // Filesystem types used in statfs(2).

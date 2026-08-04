@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"structs"
 
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/abi/linux"
 )
 
 // Ioctl represents a gasket ioctl command.

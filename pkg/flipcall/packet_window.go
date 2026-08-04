@@ -19,9 +19,9 @@ import (
 	"math/bits"
 	"os"
 
+	"github.com/sagernet/gvisor/pkg/abi/linux"
+	"github.com/sagernet/gvisor/pkg/memutil"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/memutil"
 )
 
 var (
