@@ -288,6 +288,63 @@ func handleListen(ep *Endpoint) {
 	}
 }
 
+// EnableInlineDispatch makes this stack's TCP dispatcher queue endpoints for
+// processing on the dispatching goroutine instead of waking a processor
+// goroutine, and returns the drain function the link dispatcher must call
+// after each dispatch, outside stack locks: endpoint processing may tear down
+// the connection, which takes write locks on the demuxer maps that the
+// delivery path holds read locks on. Must be called before the link endpoint
+// is attached.
+func EnableInlineDispatch(s *stack.Stack, linkEndpoint stack.LinkEndpoint) bool {
+	setter, supported := linkEndpoint.(stack.PostDispatchLinkEndpoint)
+	if !supported {
+		return false
+	}
+	d := &s.TransportProtocolInstance(ProtocolNumber).(*protocol).dispatcher
+	d.inlineMode = true
+	setter.SetPostDispatch(d.drainInlinePending)
+	return true
+}
+
+// drainInlinePending processes endpoints queued by queuePacket during the
+// current dispatch. Leftover work is handed to a processor goroutine.
+func (d *dispatcher) drainInlinePending() {
+	for {
+		ep := d.inlinePending.dequeue()
+		if ep == nil {
+			return
+		}
+		if ep.segmentQueue.empty() {
+			continue
+		}
+		deliverEndpoint(ep)
+		if !ep.segmentQueue.empty() && !ep.isOwnedByUser() {
+			d.selectProcessor(ep.ID).queueEndpoint(ep)
+		}
+	}
+}
+
+func deliverEndpoint(ep *Endpoint) {
+	switch state := ep.EndpointState(); {
+	case state.connecting():
+		handleConnecting(ep)
+	case state.connected() && state != StateTimeWait:
+		handleConnected(ep)
+	case state == StateTimeWait:
+		handleTimeWait(ep)
+	case state == StateListen:
+		handleListen(ep)
+	case state == StateError || state == StateClose:
+		ep.mu.Lock()
+		if st := ep.EndpointState(); st == StateError || st == StateClose {
+			ep.drainClosingSegmentQueue()
+		}
+		ep.mu.Unlock()
+	default:
+		panic(fmt.Sprintf("unexpected tcp state in processor: %v", state))
+	}
+}
+
 // start runs the main loop for a processor which is responsible for all TCP
 // processing for TCP endpoints.
 func (p *processor) start(wg *sync.WaitGroup) {
@@ -377,6 +434,11 @@ type dispatcher struct {
 	paused bool
 	// +checklocks:mu
 	closed bool
+
+	// inlineMode is set once by EnableInlineDispatch before the link
+	// endpoint is attached.
+	inlineMode    bool
+	inlinePending epQueue `state:"nosave"`
 }
 
 // init initializes a dispatcher and starts the main loop for all the processors
@@ -477,7 +539,11 @@ func (d *dispatcher) queuePacket(stackEP stack.TransportEndpoint, id stack.Trans
 	// goroutine as endpoint.UnlockUser will wake up the processor if the
 	// segment queue is not empty.
 	if !ep.isOwnedByUser() {
-		d.selectProcessor(id).queueEndpoint(ep)
+		if d.inlineMode {
+			d.inlinePending.enqueue(ep)
+		} else {
+			d.selectProcessor(id).queueEndpoint(ep)
+		}
 	}
 }
 
