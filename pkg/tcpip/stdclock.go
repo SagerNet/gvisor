@@ -15,8 +15,8 @@
 package tcpip
 
 import (
-	"fmt"
 	"time"
+	_ "unsafe"
 )
 
 // stdClock implements Clock with the time package.
@@ -74,14 +74,12 @@ func (*stdClock) Now() time.Time {
 	return time.Now()
 }
 
+//go:linkname nanotime runtime.nanotime
+func nanotime() int64
+
 // NowMonotonic implements Clock.NowMonotonic.
 func (s *stdClock) NowMonotonic() MonotonicTime {
-	sinceBase := time.Since(s.baseTime)
-	if sinceBase < 0 {
-		panic(fmt.Sprintf("got negative duration = %s since base time = %s", sinceBase, s.baseTime))
-	}
-
-	return s.monotonicOffset.Add(sinceBase)
+	return MonotonicTime{nanoseconds: s.monotonicOffset.nanoseconds + nanotime()}
 }
 
 // AfterFunc implements Clock.AfterFunc.
