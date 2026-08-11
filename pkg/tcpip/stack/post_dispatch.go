@@ -6,6 +6,8 @@ package stack
 type PostDispatchLinkEndpoint interface {
 	LinkEndpoint
 
-	// SetPostDispatch installs the callback. Must be called before Attach.
-	SetPostDispatch(postDispatch func())
+	// SetPostDispatch installs the callback and reports whether it will be
+	// invoked. Wrappers forward to the wrapped endpoint and report its
+	// result. Must be called before Attach.
+	SetPostDispatch(postDispatch func()) bool
 }

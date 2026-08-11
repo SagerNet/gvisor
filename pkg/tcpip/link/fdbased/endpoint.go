@@ -892,8 +892,9 @@ func (e *endpoint) InjectOutbound(dest tcpip.Address, packet *buffer.View) tcpip
 // them to the network stack.
 // SetPostDispatch installs a function invoked on the dispatch goroutine after
 // each dispatch, outside stack locks. Must be called before Attach.
-func (e *endpoint) SetPostDispatch(postDispatch func()) {
+func (e *endpoint) SetPostDispatch(postDispatch func()) bool {
 	e.postDispatch = postDispatch
+	return true
 }
 
 func (e *endpoint) dispatchLoop(inboundDispatcher linkDispatcher) tcpip.Error {

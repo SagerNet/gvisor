@@ -301,8 +301,10 @@ func EnableInlineDispatch(s *stack.Stack, linkEndpoint stack.LinkEndpoint) bool 
 		return false
 	}
 	d := &s.TransportProtocolInstance(ProtocolNumber).(*protocol).dispatcher
+	if !setter.SetPostDispatch(d.drainInlinePending) {
+		return false
+	}
 	d.inlineMode = true
-	setter.SetPostDispatch(d.drainInlinePending)
 	return true
 }
 
