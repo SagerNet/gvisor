@@ -130,7 +130,11 @@ func newIncomingSegment(id stack.TransportEndpointID, clock tcpip.Clock, pkt *st
 	s.window = seqnum.Size(hdr.WindowSize())
 	s.rcvdTime = clock.NowMonotonic()
 	s.dataMemSize = pkt.MemSize()
-	s.pkt = pkt.Clone()
+	// Replacing pkt.Clone() with pkt.IncRef() is only safe while the delivery
+	// path treats the packet as immutable after queuePacket: the segment
+	// aliases the dispatcher's PacketBuffer instead of owning a copy.
+	// Re-verify this assumption when rebasing onto a new upstream base.
+	s.pkt = pkt.IncRef()
 	s.csumValid = csumValid
 
 	if !s.pkt.RXChecksumValidated {
