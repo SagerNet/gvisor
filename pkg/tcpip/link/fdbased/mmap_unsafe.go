@@ -20,7 +20,7 @@ package fdbased
 import (
 	"fmt"
 	"unsafe"
-
+    "os"
 	"github.com/sagernet/gvisor/pkg/atomicbitops"
 	"github.com/sagernet/gvisor/pkg/tcpip/link/stopfd"
 	"golang.org/x/sys/unix"
@@ -57,7 +57,7 @@ func newPacketMMapDispatcher(fd int, e *endpoint, opts *Options) (linkDispatcher
 		fd:     fd,
 		e:      e,
 	}
-	pageSize := unix.Getpagesize()
+	pageSize := os.Getpagesize()
 	if tpBlockSize%pageSize != 0 {
 		return nil, fmt.Errorf("tpBlockSize: %d is not page aligned, pagesize: %d", tpBlockSize, pageSize)
 	}
